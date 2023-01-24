@@ -1,0 +1,30 @@
+#!/usr/bin/env zsh
+
+## EXPORTS ##
+export PROMPT='%F{red}%n@%m%f:%F{blue}%40<...<%~%<<%f$ '
+
+export HISTFILE=~/.zsh-histfile
+export SAVEHIST=1000
+
+export XDG_CONFIG_HOME=~/.config
+export XDG_CACHE_HOME=~/.cache
+export XDG_DATA_HOME=~/.local/share
+export XDG_RUNTIME_DIR=~/.xdg
+## EXPORTS ##
+
+## OPTIONS ## 
+set -o emacs
+setopt APPEND_HISTORY
+## OPTIONS ## 
+
+## BIND ## 
+bindkey "^[[A" up-line-or-search
+bindkey "^[[F" end-of-line
+bindkey "^[[H" beginning-of-line
+bindkey "^[[3~" delete-char
+## BIND ## 
+
+# non-login, non-interactive shells should also have a defined environment
+if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s $ZDOTDIR/.zprofile ]]; then
+  . $ZDOTDIR/.zprofile
+fi
