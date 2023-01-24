@@ -6,12 +6,6 @@
     stripComponents = 1
     refreshPeriod = "168h"
 
-[".zsh/plugins/spaceship"]
-    type = "git-repo"
-    url = "https://github.com/spaceship-prompt/spaceship-prompt.git"
-    depth = 1
-    refreshPeriod = "168h"
-
 # vim
 [".vim/autoload/plug.vim"]
     type = "file"
