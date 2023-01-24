@@ -1,0 +1,4 @@
+Host git.hrlou.net
+        Hostname git.hrlou.net
+        User git
+        Port 2052
