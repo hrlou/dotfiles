@@ -12,13 +12,13 @@ disabled = true
 
 [directory]
 read_only='🔒'
-style='blue'
+style='blue bold'
 truncation_length = 4
 truncation_symbol = '…/'
 
 [hostname]
 ssh_only = false
-format = '[$hostname](bold blue)'
+format = '[$hostname](blue)'
 trim_at = '.hrlou.net'
 disabled = false
 
