@@ -11,11 +11,7 @@ function deps {
 	deps::load
 
 	if [[ "$1" == "init" ]]; then
-		if $(eval "deps::check::$2"); then
-			eval "deps::init::$2"
-		else
-			eval "deps::install::$2"
-		fi
+		eval "deps::check::$2" && eval "deps::init::$2"
 	else
 		eval "deps::$1::$2"
 	fi
