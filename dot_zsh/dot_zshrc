@@ -10,5 +10,6 @@ for _rcfile in $ZDOTDIR/conf.d/*.zsh(.N); do
 done
 unset _rcfile
 
+# For Deps Manager
 export DEPS=("rust" "starship")
 export DEPS_ENABLED=("rust")
