@@ -1,4 +1,5 @@
 #!/usr/bin/env zsh
+
 function deps {
 	[ -z "$1" ] && echo "unkown operation" && return
 	
@@ -6,6 +7,9 @@ function deps {
 	 	echo "no such dependency"
 		return
 	fi
+
+	deps::load
+
 	if [[ "$1" == "init" ]]; then
 		if $(eval "deps::check::$2"); then
 			eval "deps::init::$2"
