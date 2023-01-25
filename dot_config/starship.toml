@@ -1,0 +1,36 @@
+show_always = true
+
+# Use custom format
+format = '''
+[┌─ ](bold green)$username@$hostname:$directory
+[└─>](bold green) '''
+
+# Inserts a blank line between shell prompts
+add_newline = false
+
+# Replace the '❯' symbol in the prompt with '➜'
+[character] # The name of the module we are configuring is 'character'
+success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+
+[directory]
+read_only='🔒'
+style='blue'
+truncation_length = 4
+truncation_symbol = '…/'
+
+# Disable the package module, hiding it from the prompt completely
+[package]
+disabled = true
+
+[hostname]
+ssh_only = false
+format = '[$hostname](bold blue)'
+trim_at = '.hrlou.net'
+disabled = false
+
+[username]
+style_user = 'red'
+style_root = 'black bold'
+format = '[$user]($style)'
+disabled = false
+show_always = true
