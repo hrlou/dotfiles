@@ -1,25 +1,9 @@
 #!/usr/bin/env zsh
-# mutated depsending on os or whatever
-
-function deps::source {
-	for i in $DEPS; do
-		source "$ZDOTDIR/depss.d/$i.deps.zsh"
-	done
-	unset i
-}
-
-function deps::clean {
-	for i in $DEPS; do
-		unset -f deps::{check,install,init}::$i
-	done
-	unset i
-	unset DEPS
-}
-
 function deps {
-	deps::source
+	[ -z "$1" ] && echo "unkown operation" && return
+	
 	if ! (($DEPS[(Ie)$2])); then
-	 	echo "no such depsendency"
+	 	echo "no such dependency"
 		return
 	fi
 	if [[ "$1" == "init" ]]; then
@@ -31,16 +15,28 @@ function deps {
 	else
 		eval "deps::$1::$2"
 	fi
-	deps::clean
 }
 
-deps::source
+# load dep files
+function deps::load {
+	for i in $DEPS; do
+		source "$ZDOTDIR/deps.d/$i.dep.zsh"
+	done
+	unset i
+}
 
+# clean unnecessary functions
+function deps::clean {
+	for i in $DEPS; do
+		unset -f deps::{check,install,init}::$i
+	done
+	unset i
+}
+
+
+deps::load
 for i in $DEPS_ENABLED; do
 	deps init $i
 done
 unset i
 deps::clean
-
-
-unset -f deps::{source,clean}
