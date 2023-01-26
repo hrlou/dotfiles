@@ -22,7 +22,7 @@ fi
 {{ end }}
 
 PKG="$(which "$PKG")"
-{{ if eq .chezmoi.uid 0 }}
+{{ if eq .chezmoi.uid "0" }}
 $PKG $*
 {{ else }}
 SUPER="su - -c"
