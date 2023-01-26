@@ -5,7 +5,7 @@ function deps::check::starship {
 }
 
 function deps::install::starship {
-	cargo install starship --locked
+	curl -sS https://starship.rs/install.sh | sh
 }
 
 function deps::init::starship {

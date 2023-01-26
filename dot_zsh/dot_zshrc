@@ -6,7 +6,7 @@ autoload -Uz $fpath[1]/*(.:t)
 
 # For Deps Manager
 # MAKE SURE IS SET BEFORE LOADING 
-export DEPS=("rust" "starship")
+export DEPS=("rust" "starship" "nala")
 export DEPS_ENABLED=("rust" "starship")
 
 # Source eveything in conf.d
