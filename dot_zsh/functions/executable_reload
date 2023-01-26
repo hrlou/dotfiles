@@ -1,0 +1,8 @@
+#!/usr/bin/env zsh
+source $HOME/.zshenv
+for _rc in $ZDOTDIR/.{zprofile,zshenv,zshrc}; do
+	echo "loading: $_rc"
+	source $_rc
+done
+unset _rc
+# vim: ft=zsh
