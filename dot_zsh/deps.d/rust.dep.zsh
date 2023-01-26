@@ -1,16 +1,8 @@
 #!/usr/bin/env zsh
 
 function deps::check::rust {
-	if (( !$+commands[cargo] )); then
-		return false
-	fi
-	if [[ ! -v CARGO_HOME ]]; then
-		export CARGO_HOME="$HOME/.cargo"
-	fi
-	if [[ -d "$CARGO_HOME" ]]; then
-		return true
-	fi
-	return false
+	[[ ! -v CARGO_HOME ]] && export CARGO_HOME="$HOME/.cargo"
+	[ -d "$CARGO_HOME" ] && return 0 || return 1
 }
 
 function deps::install::rust {
@@ -18,5 +10,5 @@ function deps::install::rust {
 }
 
 function deps::init::rust {
-	source "$HOME/.cargo/env"
+	[ -f "$CARGO_HOME/env" ] && source "$CARGO_HOME/env"
 }
