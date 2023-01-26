@@ -1,1 +1,6 @@
 README.md
+
+{{- if ne .chezmoi.username "hrl" }}
+.config/chezmoi/chezmoi.toml
+.gitconfig
+{{- end }}
