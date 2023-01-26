@@ -1,0 +1,16 @@
+#!/usr/bin/env zsh
+# Universal pkg command
+OS="$(uname -s)"
+
+if [[ "$OS" == "Linux" ]]; then
+	if [ $+commands[dpkg] ]; then
+		[ $+commands[nala] ] && PKG="nala" || PKG="apt-get"
+	fi
+else
+	[ $+commands[pkg] ] && PKG="pkg" || exit 1
+fi
+
+PKG="$(which "$PKG")"
+sudo $PKG $*
+unset OS PKG
+# vim: ft=zsh
