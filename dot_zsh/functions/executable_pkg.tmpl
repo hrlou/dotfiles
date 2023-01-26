@@ -1,7 +1,6 @@
 #!/usr/bin/env zsh
 # Universal pkg command
 
-# Debian
 {{ if eq .chezmoi.os "linux" }}
 if (( $+commands[dpkg] )); then
 	PKG="dpkg"
@@ -23,9 +22,15 @@ fi
 {{ end }}
 
 PKG="$(which "$PKG")"
+{{ if eq .chezmoi.uid 0 }}
+$PKG $*
+{{ else }}
 SUPER="su - -c"
 (( $+commands[sudo] )) && SUPER="sudo"
 (( $+commands[doas] )) && SUPER="doas"
 $SUPER $PKG $*
+unset SUPER
+{{ end }}
 unset OS PKG
+
 # vim: ft=zsh
