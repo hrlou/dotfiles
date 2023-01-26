@@ -2,7 +2,7 @@
 # Universal pkg command
 OS="$(uname -s)"
 
-if [[ "$OS" == "Linux" ]]; then
+if [[ "$OS" == "{{ .chezmoi.kernel.ostype }}" ]]; then
 	# Debian
 	if (( $+commands[dpkg] )); then
 		PKG="dpkg"
