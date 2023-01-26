@@ -4,12 +4,10 @@
 # install chezmoi
 sh -c "$(curl -fsLS get.chezmoi.io)"
 
-# my gitlab server uses port 2052, because of cloudflare
+# if you wish to use ssh
 printf "Host git.hrlou.net\n\tHostname git.hrlou.net\n\tUser git\n\tPort 2052\n" >> ~/.ssh/config
 
-# initialise repository
-chezmoi init git@git.hrlou.net:hrlou/dotfiles.git
-
-# install
+# initialise and update
+chezmoi init $(ssh git@git.hrlou.net && printf "git@git.hrlou.net:hrlou/dotfiles.git" || printf "https://git.hrlou.net/hrlou/dotfiles.git")
 chezmoi update
 ```
