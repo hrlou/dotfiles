@@ -4,15 +4,19 @@ OS="$(uname -s)"
 
 if [[ "$OS" == "Linux" ]]; then
 	# Debian
-	if [ $+commands[dpkg] ]; then
-		[ $+commands[nala] ] && PKG="nala" || PKG="apt-get"
+	if (( $+commands[dpkg] )); then
+		PKG="dpkg"
+		(( $+commands[apt] )) && PKG="apt"
+		(( $+commands[apt-get] )) && PKG="apt-get"
+		(( $+commands[nala] )) && PKG="nala"
+	elif (( $+commands[rpm] )); then
+		PKG="rpm"
+		(( $+commands[yum] )) && PKG="yum" 
+		(( $+commands[dnf] )) && PKG="dnf"
+		(( $+commands[zypper] )) && PKG="zypper"
 	fi
-	# RPM
-	[ $+commands[yum] ] && PKG="yum" 
-	[ $+commands[dnf] ] && PKG="dnf"
-	[ $+commands[zypper] ] && PKG="zypper"
 else
-	[ $+commands[pkg] ] && PKG="pkg" || exit 1
+	(( $+commands[pkg] )) && PKG="pkg" || exit 1
 fi
 
 PKG="$(which "$PKG")"
