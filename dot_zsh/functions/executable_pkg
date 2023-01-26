@@ -15,11 +15,18 @@ if [[ "$OS" == "Linux" ]]; then
 		(( $+commands[dnf] )) && PKG="dnf"
 		(( $+commands[zypper] )) && PKG="zypper"
 	fi
+elif [[ "$OS" == "FreeBSD" ]]; then
+	(( $+commands[pkg] )) && PKG="pkg"
+elif [[ "$OS" == "OpenBSD" ]]; then
+	(( $+commands[pkg_add] )) && PKG="pkg_add"
 else
 	(( $+commands[pkg] )) && PKG="pkg" || exit 1
 fi
 
 PKG="$(which "$PKG")"
-sudo $PKG $*
+SUPER="su - -c"
+(( $+commands[sudo] )) && SUPER="sudo"
+(( $+commands[doas] )) && SUPER="doas"
+$SUPER $PKG $*
 unset OS PKG
 # vim: ft=zsh
