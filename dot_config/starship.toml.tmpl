@@ -17,7 +17,6 @@ truncation_length = 4
 truncation_symbol = '…/'
 
 [hostname]
-ssh_only = false
 {{ if eq .chezmoi.os "freebsd" }}
 style = 'red'
 {{ else if eq .chezmoi.os "openbsd" }}
@@ -25,6 +24,7 @@ style = 'yellow'
 {{ else }}
 style = 'blue'
 {{ end }}
+ssh_only = false
 format = '[$hostname]($style)'
 trim_at = '.hrlou.net'
 disabled = false
