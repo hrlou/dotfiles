@@ -1,0 +1,35 @@
+#!/usr/bin/env zsh
+
+# SUPER #
+SUPER="su - -c"
+(( $+commands[sudo] )) && SUPER="sudo"
+(( $+commands[doas] )) && SUPER="doas"
+export SUPER="$(which "$SUPER")"
+# SUPER #
+
+# PKG #
+{{ if eq .chezmoi.os "linux" }}
+{{   if eq .chezmoi.osRelease.id "debian" }}
+PKG="dpkg"
+(( $+commands[apt] )) && PKG="apt"
+(( $+commands[apt-get] )) && PKG="apt-get"
+(( $+commands[nala] )) && PKG="nala"
+{{   else }}
+if (( $+commands[rpm] )); then
+	PKG="rpm"
+	(( $+commands[yum] )) && PKG="yum" 
+	(( $+commands[dnf] )) && PKG="dnf"
+	(( $+commands[zypper] )) && PKG="zypper"
+fi
+{{   end }}
+{{ else if eq .chezmoi.os "freebsd" }}
+PKG="pkg"
+{{ else if eq .chezmoi.os "openbsd" }}
+PKG="pkg_add"
+{{ else }}	
+(( $+commands[pkg] )) && PKG="pkg" || exit 1
+{{ end }}
+export PKG="$(which "$PKG")"
+# PKG #
+
+# vim: ft=zsh
