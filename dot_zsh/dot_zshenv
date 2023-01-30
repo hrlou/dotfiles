@@ -1,9 +1,9 @@
 #!/usr/bin/env zsh
 
 ## EXPORTS ##
+export ZDOTDIR="$HOME/.zsh"
 export PROMPT='%F{red}%n@%m%f:%F{blue}%40<...<%~%<<%f$ '
-
-export HISTFILE=~/.zsh-histfile
+export HISTFILE="$HOME/.local/share/zsh-histfile"
 export SAVEHIST=1000
 
 export XDG_CONFIG_HOME=~/.config
