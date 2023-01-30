@@ -1,8 +1,0 @@
-#!/usr/bin/env zsh
-# Universal pkg command
-
-{{ if eq .chezmoi.uid "0" }}
-$PKG $*
-{{ else }}
-$SUPER $PKG $*
-{{ end }}
