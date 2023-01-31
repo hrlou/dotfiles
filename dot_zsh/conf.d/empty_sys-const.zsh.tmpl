@@ -2,11 +2,11 @@
 # vim: ft=zsh
 
 # SUPER #
-[[ "$OSTYPE" == linux-android ]] || \
-	(( $+commands[su] )) && SUPER="su - -c"
+(( $+commands[su] )) && SUPER="su - -c"
 (( $+commands[sudo] )) && SUPER="sudo"
 (( $+commands[doas] )) && SUPER="doas"
 export SUPER="$(which "$SUPER")"
+[[ "$OSTYPE" == linux-android ]] && unset SUPER
 # SUPER #
 
 # PKG #
