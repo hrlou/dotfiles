@@ -1,6 +1,8 @@
 #!/usr/bin/env zsh
 # vim: ft=zsh
-[[ "$(uname -a)" =~ "android" ]] && export TERMUX
+{{ if eq .chezmoi.os "linux" }}
+[[ "$(uname -a)" =~ "android" ]] && export TERMUX=true
+{{ end }}
 
 # SUPER #
 if [ -z $TERMUX ]; then
