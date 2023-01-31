@@ -4,20 +4,21 @@ set -eu
 
 {{ if eq .chezmoi.os "linux" -}}
 if command -v apt >/dev/null; then
-	sudo apt update
-	# install curl
-	if ! command -v curl >/dev/null; then
-		sudo apt install -y curl
-	fi
-	# install zsh
-	if ! command -v zsh >/dev/null; then
-		sudo apt install -y zsh
-	fi
+	echo "Debian Based Distro"
 	# install nala
 	if ! command -v nala >/dev/null; then
         	echo "deb [arch=amd64,arm64,armhf] http://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
         	wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg > /dev/null
-        	sudo apt install -y nala-legacy
+        	sudo apt-get update
+		sudo apt install -y nala-legacy
+	fi
+	# install curl
+	if ! command -v curl >/dev/null; then
+		sudo nala install -y curl
+	fi
+	# install zsh
+	if ! command -v zsh >/dev/null; then
+		sudo nala install -y zsh
 	fi
 	# install rust
 	if ! command -v cargo >/dev/null; then
