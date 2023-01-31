@@ -7,6 +7,7 @@
 (( $+commands[doas] )) && SUPER="doas"
 export SUPER="$(which "$SUPER")"
 [[ "$OSTYPE" == linux-android ]] && unset SUPER
+[[ $UID == 0 ]] && unset SUPER
 # SUPER #
 
 # PKG #
@@ -21,6 +22,5 @@ elif (( $+commands[rpm] )); then
 	(( $+commands[dnf] )) && PKG="dnf"
 	(( $+commands[zypper] )) && PKG="zypper"
 fi
-
 export PKG="$(which "$PKG")"
 # PKG #
