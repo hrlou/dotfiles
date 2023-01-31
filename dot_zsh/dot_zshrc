@@ -14,3 +14,8 @@ for _rcfile in $ZDOTDIR/conf.d/*.zsh(.N); do
   source "$_rcfile"
 done
 unset _rcfile
+
+ZINIT_HOME="${HOME}/.local/share/zinit"
+source "${ZINIT_HOME}/zinit.zsh"
+zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light zsh-users/zsh-completions
