@@ -11,8 +11,13 @@ REMOTE="$(ssh git@git.hrlou.net 2>/dev/null && \
 	printf "git@git.hrlou.net:hrlou/dotfiles.git" || \
 	printf "https://git.hrlou.net/hrlou/dotfiles.git")"
 
+
+$CZ cd
+git remote add origin "$REMOTE"
+git pull -y
+cd -
 $CZ init
-$CZ init $REMOTE
+#$CZ init $REMOTE
 $CZ update
 $CZ apply
 
