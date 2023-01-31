@@ -12,7 +12,6 @@ REMOTE="$(ssh git@git.hrlou.net && \
 	printf "https://git.hrlou.net/hrlou/dotfiles.git")"
 
 $CZ init $REMOTE
-$CZ init
 $CZ update
 $CZ apply
 
