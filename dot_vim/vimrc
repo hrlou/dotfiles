@@ -1,5 +1,6 @@
 call plug#begin()
 
 Plug 'cespare/vim-toml', { 'branch': 'main' }
+Plug 'phanviet/vim-monokai-pro'
 
 call plug#end()
