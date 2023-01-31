@@ -14,19 +14,14 @@ if command -v apt >/dev/null; then
         	sudo apt-get update
 		sudo apt install -y nala-legacy
 	fi
-	# install nvim
-	if ! command -v nvim >/dev/null; then
-		sudo nala install -y neovim vim
-	fi
-	# install curl
-	if ! command -v curl >/dev/null; then
-		sudo nala install -y curl
-	fi
-	# install zsh
-	if ! command -v zsh >/dev/null; then
-		sudo nala install -y zsh
-		sudo chsh -s $(which zsh) "$USER"
-	fi
+	command -v vim >/dev/null || PACKAGES+="vim "		
+	command -v nvim >/dev/null || PACKAGES+="neovim vim "		
+	command -v curl >/dev/null || PACKAGES+="curl "
+	command -v zsh >/dev/null || PACKAGES+="zsh "
+	command -v gcc >/dev/null || PACKAGES+="build-essential "
+	command -v cmake >/dev/null || PACKAGES+="cmake "
+	[ ! -z "$PACKAGES" ] && sudo nala install -y $PACKAGES
+	sudo chsh -s $(which zsh) "$USER"
 fi
 # install rust
 [ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
