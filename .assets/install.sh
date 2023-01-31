@@ -15,11 +15,5 @@ $CZ init $REMOTE
 $CZ update
 $CZ apply
 
-TIMER=10
-while [ $TIMER -gt 0 ]; do
-	printf "Exiting in %02d\r" $TIMER
-	sleep 1
-	TIMER=$(($TIMER - 1))
-done
-echo "Please relog"
-exit
+echo "Dotfiles are installed"
+echo "Please restart shell session"
