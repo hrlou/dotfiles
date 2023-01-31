@@ -1,16 +1,11 @@
 #!/usr/bin/env zsh
 # vim: ft=zsh
-{{ if eq .chezmoi.os "linux" }}
-[[ "$(uname -a)" =~ "android" ]] && export TERMUX=true
-{{ end }}
 
 # SUPER #
-if [ -z $TERMUX ]; then
-	SUPER="su - -c"
-	(( $+commands[sudo] )) && SUPER="sudo"
-	(( $+commands[doas] )) && SUPER="doas"
-	export SUPER="$(which "$SUPER")"
-fi
+(( $+commands[su] )) && su && SUPER="su - -c"
+(( $+commands[sudo] )) && SUPER="sudo"
+(( $+commands[doas] )) && SUPER="doas"
+export SUPER="$(which "$SUPER")"
 # SUPER #
 
 # PKG #
