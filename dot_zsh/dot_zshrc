@@ -17,6 +17,7 @@ unset _rcfile
 
 ZINIT_HOME="${HOME}/.local/share/zinit"
 source "${ZINIT_HOME}/zinit.zsh"
-zinit light zdharma-continuum/fast-syntax-highlighting
+#zinit light zdharma-continuum/fast-syntax-highlighting
+zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
-zinit light marlonrichert/zsh-autocomplete
+zinit light zsh-users/zsh-autosuggestions
