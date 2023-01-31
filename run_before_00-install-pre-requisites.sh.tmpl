@@ -22,6 +22,7 @@ if command -v apt >/dev/null; then
 	fi
 fi
 # install rust
+[ -f "$HOME/.cargo/env" ] && source "$HOME/.cargo/env"
 if ! command -v cargo >/dev/null; then
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 fi
