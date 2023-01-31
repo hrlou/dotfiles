@@ -11,5 +11,4 @@ alias j=jobs
 alias m=$PAGER
 alias g='egrep -i'
 
-alias sudo='$SUPER'
 alias pkg='$SUPER $PKG'

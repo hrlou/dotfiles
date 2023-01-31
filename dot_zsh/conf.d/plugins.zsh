@@ -1,2 +1,7 @@
+# First
 ZSH_HIGHLIGHT_DIRS_BLACKLIST+=(/mnt/c)
-source $ZDOTDIR/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
+
+for _pluginfile in $ZDOTDIR/plugins/*/*.plugin.zsh(.N); do
+  source "$_pluginfile"
+done
+unset _pluginfile
