@@ -12,3 +12,8 @@ alias m=$PAGER
 alias g='egrep -i'
 
 alias pkg='$SUPER $PKG'
+
+alias ed='$EDITOR'
+alias vi='$EDITOR'
+alias vi='$EDITOR'
+alias vi='$EDITOR'
