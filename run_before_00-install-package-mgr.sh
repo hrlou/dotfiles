@@ -14,7 +14,6 @@ command -v zsh >/dev/null || PACKAGES+="zsh "
 
 # DEBIAN
 if command -v apt >/dev/null; then
-	echo "Running on debian based distribution"
 	# install nala
 	if ! command -v nala >/dev/null; then
         	echo "deb [arch=amd64,arm64,armhf] http://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
@@ -24,7 +23,6 @@ if command -v apt >/dev/null; then
 	fi
 	command -v gcc >/dev/null || PACKAGES+="build-essential "
 	[ ! -z "${PACKAGES}" ] && sudo nala install -y $PACKAGES
-	sudo chsh -s $(which zsh) "$USER"
 fi
 
 unset PACKAGES
