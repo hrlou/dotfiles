@@ -3,12 +3,12 @@ set -eu
 
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
+# Make blank so test works
 PACKAGES=''
 
 # COMMANDS
 command -v cmake >/dev/null || PACKAGES+="cmake "
 command -v curl >/dev/null || PACKAGES+="curl "
-command -v nvim >/dev/null || PACKAGES+="neovim "		
 command -v vim >/dev/null || PACKAGES+="vim "		
 command -v zsh >/dev/null || PACKAGES+="zsh "
 
