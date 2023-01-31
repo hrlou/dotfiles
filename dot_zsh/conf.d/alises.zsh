@@ -10,3 +10,5 @@ alias h='fc -l'
 alias j=jobs
 alias m=$PAGER
 alias g='egrep -i'
+
+alias pkg='$SUPER $PKG'
