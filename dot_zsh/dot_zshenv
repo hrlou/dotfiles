@@ -13,6 +13,7 @@ export XDG_RUNTIME_DIR=~/.xdg
 ## EXPORTS ##
 
 ## OPTIONS ## 
+set -k
 set -o emacs
 setopt APPEND_HISTORY
 setopt globstarshort
