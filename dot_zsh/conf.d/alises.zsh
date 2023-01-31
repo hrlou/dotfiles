@@ -10,10 +10,10 @@ alias h='fc -l'
 alias j=jobs
 alias m=$PAGER
 alias g='egrep -i'
-
+alias super='$SUPER'
+alias sudo='$SUPER'
+alias doas='$SUPER'
 alias pkg='$SUPER $PKG'
-
 alias ed='$EDITOR'
 alias vi='$EDITOR'
-alias vi='$EDITOR'
-alias vi='$EDITOR'
+alias vim='$EDITOR'
