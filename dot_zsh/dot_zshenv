@@ -2,6 +2,7 @@
 
 ## EXPORTS ##
 export ZDOTDIR="$HOME/.zsh"
+export ZINIT_HOME="${HOME}/.local/share/zinit"
 export PROMPT='%F{red}%n@%m%f:%F{blue}%40<...<%~%<<%f$ '
 export HISTFILE="$HOME/.local/share/zsh-histfile"
 export SAVEHIST=1000
