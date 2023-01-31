@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
 set -eu
 
 {{ if eq .chezmoi.os "linux" -}}
@@ -12,6 +11,10 @@ if command -v apt >/dev/null; then
         	sudo apt-get update
 		sudo apt install -y nala-legacy
 	fi
+	# install nvim
+	if ! command -v nvim >/dev/null; then
+		sudo nala install -y neovim vim
+	fi
 	# install curl
 	if ! command -v curl >/dev/null; then
 		sudo nala install -y curl
@@ -19,6 +22,7 @@ if command -v apt >/dev/null; then
 	# install zsh
 	if ! command -v zsh >/dev/null; then
 		sudo nala install -y zsh
+		sudo chsh -s $(which zsh) "$USER"
 	fi
 fi
 # install rust
@@ -29,6 +33,8 @@ fi
 if ! command -v starship >/dev/null; then
 	curl --proto '=https' --tlsv1.2 -sSf https://starship.rs/install.sh | sudo sh
 fi
+echo "restarting shell"
+exec zsh
 {{ else }}
 echo "Unimplemented"
 {{ end }}
