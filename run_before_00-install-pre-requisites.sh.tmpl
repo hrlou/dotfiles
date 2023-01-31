@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 set -eu
 
+export LC_ALL=C.UTF-8
+export LANG=C.UTF-8
+
 {{ if eq .chezmoi.os "linux" -}}
 if command -v apt >/dev/null; then
 	echo "Running on debian based distribution"
