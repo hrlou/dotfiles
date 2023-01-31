@@ -16,10 +16,11 @@ command -v zsh >/dev/null || PACKAGES+="zsh "
 if command -v apt >/dev/null; then
 	# install nala
 	if ! command -v nala >/dev/null; then
+		echo "installing nala"
         	echo "deb [arch=amd64,arm64,armhf] http://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
         	wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg > /dev/null
-        	sudo apt-get update
-		sudo apt install -y nala-legacy
+        	sudo apt-get update >/dev/null
+		sudo apt-get install -y nala-legacy >/dev/null
 	fi
 	command -v gcc >/dev/null || PACKAGES+="build-essential "
 	[ ! -z "${PACKAGES}" ] && sudo nala install -y $PACKAGES

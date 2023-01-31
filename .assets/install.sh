@@ -6,8 +6,8 @@ curl -fsLS get.chezmoi.io | sh
 CZ="$BINDIR/chezmoi"
 
 # Setup
-ssh git@git.hrlou.net || printf "Host git.hrlou.net\n\tHostname git.hrlou.net\n\tUser git\n\tPort 2052\n" >> ~/.ssh/config
-REMOTE="$(ssh git@git.hrlou.net && \
+ssh git@git.hrlou.net 2>/dev/null || printf "Host git.hrlou.net\n\tHostname git.hrlou.net\n\tUser git\n\tPort 2052\n" >> $HOME/.ssh/config
+REMOTE="$(ssh git@git.hrlou.net 2>/dev/null && \
 	printf "git@git.hrlou.net:hrlou/dotfiles.git" || \
 	printf "https://git.hrlou.net/hrlou/dotfiles.git")"
 
@@ -21,3 +21,5 @@ while [ $TIMER -gt 0 ]; do
 	sleep 1
 	TIMER=$(($TIMER - 1))
 done
+echo "Please relog"
+exit
