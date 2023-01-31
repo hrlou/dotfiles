@@ -10,7 +10,6 @@ export SUPER="$(which "$SUPER")"
 # SUPER #
 
 # PKG #
-
 if (( $+commands[dpkg] )); then
 	PKG="dpkg"
 	(( $+commands[apt] )) && PKG="apt"
