@@ -7,3 +7,5 @@ if [ -f "$HOME/bin/chezmoi" ]; then
 	mv "$HOME/bin/chezmoi" "$HOME/.local/bin/"
 	[ "$(ls -A "$HOME/bin")" ] || rm -r "$HOME/bin"
 fi
+
+$HOME/.local/bin/chezmoi init
