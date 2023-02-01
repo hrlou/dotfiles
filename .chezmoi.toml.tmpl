@@ -13,6 +13,13 @@ os_color = 'yellow'
 os_color = 'blue'
 {{- end }}
 
+[data.os]
+{{- if (.chezmoi.homeDir | contains "com.termux") -}}
+termux = true
+{{- else }}
+termux = false 
+{{- end }}
+
 [git]
 autoCommit = true
 autoPush = true
