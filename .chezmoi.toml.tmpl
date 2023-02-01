@@ -4,20 +4,22 @@
 email = {{ $email | quote }}
 name = {{ $name | quote }}
 
-[data.style]
-{{- if eq .chezmoi.os "freebsd" }}
-os_color = 'red'
-{{- else if eq .chezmoi.os "openbsd" }}
-os_color = 'yellow'
-{{- else }}
-os_color = 'blue'
-{{- end }}
-
 [data.os]
 {{- if (.chezmoi.homeDir | contains "com.termux") -}}
 termux = true
 {{- else }}
 termux = false 
+{{- end }}
+
+[data.style]
+{{- if eq .chezmoi.os "freebsd" }}
+os_color = 'red'
+{{- else if eq .chezmoi.os "openbsd" }}
+os_color = 'yellow'
+{{- else if (.chezmoi.homeDir | contains "com.termux") -}}
+os_color = 'bold green'
+{{- else }}
+os_color = 'blue'
 {{- end }}
 
 [git]

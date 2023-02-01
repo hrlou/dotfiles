@@ -26,6 +26,6 @@ disabled = false
 [username]
 style_user = 'red'
 style_root = 'black bold'
-format = '[$user]($style)'
+format = '[{{ if .os.termux }}android{{ else }}$user{{ end }}]($style)'
 disabled = false
 show_always = true
