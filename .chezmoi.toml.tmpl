@@ -1,9 +1,18 @@
 {{- $email := promptStringOnce . "email" "Email address" -}}
 {{- $name := promptStringOnce . "name" "Your Name" -}}
 [data]
-	email = {{ $email | quote }}
-	name = {{ $name | quote }}
+email = {{ $email | quote }}
+name = {{ $name | quote }}
+
+[data.style]
+{{- if eq .chezmoi.os "freebsd" }}
+os_color = 'red'
+{{- else if eq .chezmoi.os "openbsd" }}
+os_color = 'yellow'
+{{- else }}
+os_color = 'blue'
+{{- end }}
 
 [git]
-	autoCommit = true
-	autoPush = true
+autoCommit = true
+autoPush = true

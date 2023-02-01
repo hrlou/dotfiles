@@ -17,7 +17,7 @@ truncation_length = 4
 truncation_symbol = '…/'
 
 [hostname]
-style = 'blue'
+style = {{ .style.os_color }}
 ssh_only = false
 format = '[$hostname]($style)'
 trim_at = '.hrlou.net'
