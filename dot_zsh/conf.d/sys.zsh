@@ -5,7 +5,7 @@
 (( $+commands[su] )) && SUPER="su - -c"
 (( $+commands[sudo] )) && SUPER="sudo"
 (( $+commands[doas] )) && SUPER="doas"
-export SUPER="$(which "$SUPER")"
+export SUPER=$(sh -c "which $SUPER")
 [[ "$OSTYPE" == linux-android ]] && unset SUPER
 [[ $UID == 0 ]] && unset SUPER
 # SUPER #
