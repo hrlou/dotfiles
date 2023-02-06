@@ -1,8 +1,10 @@
 {{- $email := promptStringOnce . "email" "Email address" -}}
 {{- $name := promptStringOnce . "name" "Your Name" -}}
+{{- $domain := promptStringOnce . "domain" "Your Domain" -}}
 [data]
 email = {{ $email | quote }}
 name = {{ $name | quote }}
+domain = {{ $domain | quote }}
 
 [data.os]
 {{- if (.chezmoi.homeDir | contains "com.termux") -}}
@@ -12,6 +14,7 @@ termux = false
 {{- end }}
 
 [data.style]
+{{/* os_color */}}
 {{- if eq .chezmoi.os "freebsd" }}
 os_color = 'red'
 {{- else if eq .chezmoi.os "openbsd" }}
