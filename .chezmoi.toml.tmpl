@@ -1,53 +1,52 @@
 {{- $email := promptStringOnce . "email" "Email address" -}}
 {{- $name := promptStringOnce . "name" "Your Name" -}}
 {{- $domain := promptStringOnce . "domain" "Your Domain" -}}
+{{/* find superuser command */}}
+{{- $dummy := set . "super" false -}}
+{{- if (index (lookPath "sudo")) -}}
+  {{- $dummy := set . "super" (lookPath "sudo") -}}
+{{- else if (index (lookPath "doas")) -}}
+  {{- $dummy := set . "super" (lookPath "doas") -}}
+{{- else if (index (lookPath "su")) -}}
+  {{- $dummy := set . "super" (lookPath "su" | printf "%s - -c") -}}
+{{- end -}}
+{{/* find distro */}}
+{{- $dummy := set . "distro" .chezmoi.os -}}
+{{/* most reliable way to detect termux */}}
+{{- if (.chezmoi.homeDir | contains "com.termux") -}}
+  {{- $dummy := set . "distro" "termux" -}}
+{{- else if (index .chezmoi.osRelease "id" ) -}}
+  {{- $dummy := set . "distro" .chezmoi.osRelease.id -}}
+{{- end -}}
+{{/* find if wsl */}}
+{{- $dummy := set . "wsl" false -}}
+{{- if (and (eq .chezmoi.os "linux") (index .chezmoi.kernel "osrelease")) -}} 
+  {{- if (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+    {{- $dummy := set . "wsl" true -}}
+  {{- end -}}
+{{- end -}}
+
 [data]
 email = {{ $email | quote }}
 name = {{ $name | quote }}
 domain = {{ $domain | quote }}
 
 [data.os]
-{{- if (.chezmoi.homeDir | contains "com.termux") }}
-distro = 'termux'
-{{- else if (index .chezmoi.osRelease "id" ) }}
-distro = '{{ .chezmoi.osRelease.id }}'
-{{- else }}
-distro = '{{ .chezmoi.os }}'
-{{- end -}}
-
-{{- if .os.termux }}
-super = ''
-{{- else }}
-{{-   if (index (lookPath "sudo")) }}
-super = '{{ lookPath "sudo" }}'
-{{-   else if (index (lookPath "doas")) }}
-super = '{{ lookPath "doas" }}'
-{{-   else if (index (lookPath "su")) }}
-super = '{{ lookPath "su" }} - -c'
-{{-   else }}
-super = ''
-{{-   end }}
+distro = {{ .distro | quote }}
+super = {{ 
+   if (or (eq .distro "termux") (not .super)) -}}
+     ''
+{{- else -}}
+  {{ .super | quote }}
 {{- end }}
-
-{{- if eq .chezmoi.os "linux" }}
-{{-   if (index .chezmoi.kernel "osrelease") }} 
-{{-     if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
-wsl = true
-{{-     end }}
-{{-   end }}
-{{- else }}
-wsl = false
-{{- end }}
+wsl = {{ .wsl }}
 
 [data.style]
-{{- if eq .chezmoi.os "freebsd" }}
-os_color = 'red'
-{{- else if eq .chezmoi.os "openbsd" }}
-os_color = 'yellow'
-{{- else if (.chezmoi.homeDir | contains "com.termux") }}
-os_color = 'bold green'
-{{- else }}
-os_color = 'blue'
+os_color = {{
+   if (eq .distro "termux") -}}
+     'bold green'
+{{- else -}}
+     'blue'
 {{- end }}
 
 [git]

@@ -1,5 +1,3 @@
-{{- if eq .chezmoi.os "linux" -}}
-{{-     if (.chezmoi.kernel.osrelease | lower | contains "microsoft") -}}
+{{- if .os.wsl -}}
 /mnt/c/Users/{{ .chezmoi.username }}
-{{-     end -}}
 {{- end -}}
