@@ -3,11 +3,15 @@ Host git.hrlou.net
         User git
 	Port 2052
 {{ if eq .domain "hrlou.net" }}
-Host mc mc.hrlou.net
-	Hostname 10.0.1.64
-	User minecraft
+Host sun sun.hrlou.net
+	Hostname 10.0.1.1
+	User root
 
 Host edge edge.hrlou.net
-	Hostname 10.0.1.4
+	Hostname 10.0.1.2
 	User root
+
+Host mc mc.hrlou.net
+	Hostname 10.0.2.64
+	User minecraft
 {{- end }}
