@@ -7,19 +7,44 @@ name = {{ $name | quote }}
 domain = {{ $domain | quote }}
 
 [data.os]
-{{- if (.chezmoi.homeDir | contains "com.termux") -}}
-termux = true
+{{- if (.chezmoi.homeDir | contains "com.termux") }}
+distro = 'termux'
+{{- else if (index .chezmoi.osRelease "id" ) }}
+distro = '{{ .chezmoi.osRelease.id }}'
 {{- else }}
-termux = false 
+distro = '{{ .chezmoi.os }}'
+{{- end -}}
+
+{{- if .os.termux }}
+super = ''
+{{- else }}
+{{-   if (index (lookPath "sudo")) }}
+super = '{{ lookPath "sudo" }}'
+{{-   else if (index (lookPath "doas")) }}
+super = '{{ lookPath "doas" }}'
+{{-   else if (index (lookPath "su")) }}
+super = '{{ lookPath "su" }} - -c'
+{{-   else }}
+super = ''
+{{-   end }}
+{{- end }}
+
+{{- if eq .chezmoi.os "linux" }}
+{{-   if (index .chezmoi.kernel "osrelease") }} 
+{{-     if (.chezmoi.kernel.osrelease | lower | contains "microsoft") }}
+wsl = true
+{{-     end }}
+{{-   end }}
+{{- else }}
+wsl = false
 {{- end }}
 
 [data.style]
-{{/* os_color */}}
 {{- if eq .chezmoi.os "freebsd" }}
 os_color = 'red'
 {{- else if eq .chezmoi.os "openbsd" }}
 os_color = 'yellow'
-{{- else if (.chezmoi.homeDir | contains "com.termux") -}}
+{{- else if (.chezmoi.homeDir | contains "com.termux") }}
 os_color = 'bold green'
 {{- else }}
 os_color = 'blue'
