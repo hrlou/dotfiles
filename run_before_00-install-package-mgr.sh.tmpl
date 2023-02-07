@@ -4,13 +4,6 @@ set -eu
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 
-# command -v su >/dev/null || SUPER="su - -c"
-# command -v sudo >/dev/null || SUPER="sudo"
-# command -v doas >/dev/null || SUPER="doas"
-# export SUPER=$(sh -c "which $SUPER")
-# [[ "$OSTYPE" == linux-android ]] && unset SUPER
-# [[ $UID == 0 ]] && unset SUPER
-
 # Make blank so test works
 PACKAGES=''
 
@@ -26,13 +19,13 @@ if command -v apt >/dev/null; then
 	# install nala
 	if ! command -v nala >/dev/null; then
 		echo "installing nala"
-        	echo "deb [arch=amd64,arm64,armhf] http://deb.volian.org/volian/ scar main" | sudo tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
-        	wget -qO - https://deb.volian.org/volian/scar.key | sudo tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg > /dev/null
-        	sudo apt-get update >/dev/null
-		sudo apt-get install -y nala-legacy >/dev/null
+        	echo "deb [arch=amd64,arm64,armhf] http://deb.volian.org/volian/ scar main" | {{ .os.super }} tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
+        	wget -qO - https://deb.volian.org/volian/scar.key | {{ .os.super }} tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg > /dev/null
+        	{{ .os.super }} apt-get update >/dev/null
+		{{ .os.super }} apt-get install -y nala-legacy >/dev/null
 	fi
 	command -v gcc >/dev/null || PACKAGES+="build-essential "
-	[ ! -z "${PACKAGES}" ] && sudo nala install -y $PACKAGES
+	[ ! -z "${PACKAGES}" ] && {{ .os.super }} nala install -y $PACKAGES
 fi
 
 unset PACKAGES

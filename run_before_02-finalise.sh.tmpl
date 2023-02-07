@@ -5,7 +5,7 @@ if [[ "$SHELL" != "$(which zsh)" ]]; then
 fi
 
 # install python as default
-$SUPER update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+{{ .os.super }} update-alternatives --install /usr/bin/python python /usr/bin/python3 1
 
 # this stops errors, do not remove
 exit 0
