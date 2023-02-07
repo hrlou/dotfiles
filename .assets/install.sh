@@ -1,9 +1,15 @@
 #!/bin/sh
 # Install Chezmoi
-export BINDIR="$HOME/.local/bin"
-mkdir -p "$BINDIR"
-curl -fsLS get.chezmoi.io | sh
-CZ="$BINDIR/chezmoi"
+if command -v chezmoi >/dev/null; then
+	echo "Chezmoi found"
+	CZ="$(which chezmoi)"
+else
+	echo "Installing chezmoi"
+	export BINDIR="$HOME/.local/bin"
+	mkdir -p "$BINDIR"
+	curl -fsLS get.chezmoi.io | sh
+	CZ="$BINDIR/chezmoi"
+fi
 
 cz_install() {
 	$CZ init $REMOTE
@@ -13,14 +19,16 @@ cz_install() {
 }
 
 # Setup
-ssh git@git.hrlou.net 2>/dev/null || printf "Host git.hrlou.net\n\tHostname git.hrlou.net\n\tUser git\n\tPort 2052\n" >> $HOME/.ssh/config
-REMOTE="$(ssh git@git.hrlou.net 2>/dev/null && \
+echo "Testing connection..."
+REMOTE="$(ssh git@git.hrlou.net >/dev/null 2>&1 && \
 	printf "git@git.hrlou.net:hrlou/dotfiles.git" || \
 	printf "https://git.hrlou.net/hrlou/dotfiles.git")"
+echo "Using '$REMOTE'"
 
-while ! $CZ verify $HOME/.zsh/.zshrc; do
-	cz_install
-done
+cz_install
+#while ! $CZ verify $HOME/.zsh/.zshrc; do
+#	cz_install
+#done
 
 echo "Dotfiles are installed"
 echo "Please restart shell session"
