@@ -1,4 +1,9 @@
 #!{{ lookPath "bash" }}
-if ! command -v starship >/dev/null; then
+source '{{ .chezmoi.sourceDir }}/.assets/include.sh'
+
+if ! _cmd_check starship; then
+	_log_info "starship not found"
+	_log_info "installing starship"
 	curl -sS https://starship.rs/install.sh | {{ .os.super }} sh -s -- -y >/dev/null
+	_log_info "starship installed"
 fi

@@ -1,5 +1,17 @@
 #!{{ lookPath "bash" }}
+source '{{ .chezmoi.sourceDir }}/.assets/include.sh'
 set -eu
+
+_pkg_add() {
+	local cmd="$1"
+	[ -z ${2+x} ] && local pkg="$cmd" || local pkg="$2"
+	if ! _cmd_check $cmd; then
+		PACKAGES+="$pkg "
+		_log_info "Going to install '${pkg}'"
+	else
+		_log_info "Skipping '${pkg}'"
+	fi
+}
 
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
@@ -8,24 +20,29 @@ export LANG=C.UTF-8
 PACKAGES=''
 
 # COMMANDS
-command -v cmake >/dev/null || PACKAGES+="cmake "
-command -v curl >/dev/null || PACKAGES+="curl "
-command -v vim >/dev/null || PACKAGES+="vim "		
-command -v zsh >/dev/null || PACKAGES+="zsh "
-command -v python3 >/dev/null || PACKAGES+="python3 python3-pip "
+_pkg_add cmake
+_pkg_add curl
+_pkg_add vim
+_pkg_add zsh
+_pkg_add python3 "python3 python3-pip"
 
 # DEBIAN
-if command -v apt >/dev/null; then
-	# install nala
+if _cmd_check dpkg; then
+	_log_info "dpkg found"
 	if ! command -v nala >/dev/null; then
-		echo "installing nala"
+		_log "installing nala"
         	echo "deb [arch=amd64,arm64,armhf] http://deb.volian.org/volian/ scar main" | {{ .os.super }} tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
         	wget -qO - https://deb.volian.org/volian/scar.key | {{ .os.super }} tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg >/dev/null
         	{{ .os.super }} apt-get update >/dev/null
 		{{ .os.super }} apt-get install -y nala-legacy >/dev/null
 	fi
-	command -v gcc >/dev/null || PACKAGES+="build-essential "
-	[ ! -z "${PACKAGES}" ] && {{ .os.super }} nala install -y $PACKAGES
+	_pkg_add gcc build-essential
+	if [ ! -z "${PACKAGES}" ]; then
+		_log "installing packages..."
+		sleep 1
+		{{ .os.super }} nala install -y ${PACKAGES}
+		_log "packages installed!"
+	fi
 fi
 
 unset PACKAGES

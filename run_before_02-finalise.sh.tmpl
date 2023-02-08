@@ -1,14 +1,19 @@
 #!{{ lookPath "bash" }}
+source '{{ .chezmoi.sourceDir }}/.assets/include.sh'
+
 if [[ "$SHELL" != "$(which zsh)" ]]; then
-	echo "Chaning shell to ZSH"
+	_log_info "shell is not set to zsh"
+	_log "setting shell to zsh"
 	chsh -s "$(which zsh)"
 fi
 
 # install python as default
-if command -v python3 >/dev/null; then
+if _cmd_check python3; then
+	_log_info "python3 is installed"
 	PYTHON_3="{{ lookPath "python3" }}"
 	PYTHON="$(dirname "$PYTHON_3")/python"
-	if command -v python >/dev/null; then
+	if _cmd_check python; then
+		_log "setting default python"
 		{{ .os.super }} update-alternatives --install $PYTHON python $PYTHON_3 1
 	fi
 fi
