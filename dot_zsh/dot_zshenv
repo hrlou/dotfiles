@@ -1,10 +1,10 @@
 #!/usr/bin/env zsh
 
 ## EXPORTS ##
-export ZDOTDIR="$HOME/.zsh"
-export ZINIT_HOME="${HOME}/.local/share/zinit"
 export PROMPT='%F{red}%n@%m%f:%F{blue}%40<...<%~%<<%f$ '
-export HISTFILE="$HOME/.local/share/zsh-histfile"
+export ZDOTDIR="${HOME}/.zsh"
+export ZINIT_HOME="${HOME}/.local/share/zinit"
+export HISTFILE="${HOME}/.local/share/zsh-histfile"
 export SAVEHIST=1000
 
 export XDG_CONFIG_HOME="${HOME}/.config"
@@ -28,6 +28,6 @@ bindkey "^[[3~" delete-char
 ## BIND ## 
 
 # non-login, non-interactive shells should also have a defined environment
-if [[ ( "$SHLVL" -eq 1 && ! -o LOGIN ) && -s $ZDOTDIR/.zprofile ]]; then
-  . $ZDOTDIR/.zprofile
+if [[ ( "${SHLVL}" -eq 1 && ! -o LOGIN ) && -s ${ZDOTDIR}/.zprofile ]]; then
+  . ${ZDOTDIR}/.zprofile
 fi
