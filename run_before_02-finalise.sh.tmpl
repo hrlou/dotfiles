@@ -12,7 +12,7 @@ if _cmd_check python3; then
 	_log_info "python3 is installed"
 	PYTHON_3="{{ lookPath "python3" }}"
 	PYTHON="$(dirname "$PYTHON_3")/python"
-	if _cmd_check python; then
+	if ! _cmd_check python; then
 		_log "setting default python"
 		{{ .os.super }} update-alternatives --install $PYTHON python $PYTHON_3 1
 	fi

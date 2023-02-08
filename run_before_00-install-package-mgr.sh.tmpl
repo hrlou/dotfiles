@@ -7,9 +7,9 @@ _pkg_add() {
 	[ -z ${2+x} ] && local pkg="$cmd" || local pkg="$2"
 	if ! _cmd_check $cmd; then
 		PACKAGES+="$pkg "
-		_log_info "Going to install '${pkg}'"
+		_log_info "going to install '${pkg}'"
 	else
-		_log_info "Skipping '${pkg}'"
+		_log_info "skipping '${pkg}'"
 	fi
 }
 
