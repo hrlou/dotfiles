@@ -20,7 +20,7 @@ if command -v apt >/dev/null; then
 	if ! command -v nala >/dev/null; then
 		echo "installing nala"
         	echo "deb [arch=amd64,arm64,armhf] http://deb.volian.org/volian/ scar main" | {{ .os.super }} tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
-        	wget -qO - https://deb.volian.org/volian/scar.key | {{ .os.super }} tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg > /dev/null
+        	wget -qO - https://deb.volian.org/volian/scar.key | {{ .os.super }} tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg >/dev/null
         	{{ .os.super }} apt-get update >/dev/null
 		{{ .os.super }} apt-get install -y nala-legacy >/dev/null
 	fi
