@@ -42,7 +42,7 @@ if _cmd_check dpkg; then
         	echo "deb [arch=amd64,arm64,armhf] http://deb.volian.org/volian/ scar main" | {{ .os.super }} tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
         	wget -qO - https://deb.volian.org/volian/scar.key | {{ .os.super }} tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg >"/dev/null"
         	{{ .os.super }} apt-get update >"/dev/null"
-        	{{ .os.super }} apt-get python3 >"/dev/null"
+        	{{ .os.super }} apt-get install -y python3 >"/dev/null"
 		# this is a really crappy work around 
 		[[ $(python3 -V | awk '{print$2}' | awk -F '.' '{print $2}') -ge 10 ]] && NALA="nala" || NALA="nala-legacy"
 		{{ .os.super }} apt-get install -y "${NALA}" >"/dev/null"
