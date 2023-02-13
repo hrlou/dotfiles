@@ -27,7 +27,8 @@ echo "Using '$REMOTE'"
 
 cz_install
 SRC="$(${CZ} source-path)"
-source "${SRC}/.assets/include.sh"
+# source
+. "${SRC}/.assets/include.sh"
 #while ! $CZ verify $HOME/.zsh/.zshrc; do
 #	cz_install
 #done
