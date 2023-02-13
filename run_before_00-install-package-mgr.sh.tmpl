@@ -17,18 +17,26 @@ export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 
 # Make blank so test works
+PKG=''
 PACKAGES=''
 
 # COMMANDS
-_pkg_add cmake
-_pkg_add curl
-_pkg_add vim
-_pkg_add zsh
-_pkg_add python3 "python3 python3-pip"
+_pkg_find_all() {
+	_pkg_add htop
+	_pkg_add cmake
+	_pkg_add curl
+	_pkg_add vim
+	_pkg_add zsh
+	if [ "$PKG" == "dpkg" ]; then
+		_pkg_add python3 "python3 python3-pip"
+		_pkg_add gcc build-essential
+	fi
+}
 
 # DEBIAN
 if _cmd_check dpkg; then
-	_log_info "dpkg found"
+	_log "dpkg found"
+	PKG='dpkg'
 	if ! command -v nala >/dev/null; then
 		_log "installing nala"
         	echo "deb [arch=amd64,arm64,armhf] http://deb.volian.org/volian/ scar main" | {{ .os.super }} tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
@@ -36,7 +44,8 @@ if _cmd_check dpkg; then
         	{{ .os.super }} apt-get update >/dev/null
 		{{ .os.super }} apt-get install -y nala-legacy >/dev/null
 	fi
-	_pkg_add gcc build-essential
+	_log "searching for packages"
+	_pkg_find_all
 	if [ ! -z "${PACKAGES}" ]; then
 		_log "installing packages..."
 		sleep 1
