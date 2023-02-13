@@ -7,7 +7,7 @@ if [[ "$SHELL" != "$(which zsh)" ]]; then
 	chsh -s "$(which zsh)"
 fi
 
-{{ os.wsl }}
+{{ if .os.wsl }}
 _log "copying windows ssh keys"
 cp $HOME/win/.ssh/id* $HOME/.ssh/
 chmod 700 $HOME/.ssh/id*
