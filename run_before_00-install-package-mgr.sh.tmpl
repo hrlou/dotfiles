@@ -37,7 +37,6 @@ _pkg_find_all() {
 if _cmd_check dpkg; then
 	_log "dpkg found"
 	MGR='dpkg'
-	#NALA='nala'
 	if ! command -v nala >/dev/null; then
 		_log "installing nala"
         	echo "deb [arch=amd64,arm64,armhf] http://deb.volian.org/volian/ scar main" | {{ .os.super }} tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
