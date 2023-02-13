@@ -1,13 +1,15 @@
 #!/bin/sh
 # Bootstrap
 eval "$(curl -fsLS git.hrlou.net/hrlou/dotfiles/-/raw/main/.assets/include.sh)"
+export BINDIR="$HOME/.local/bin"
 # Install Chezmoi
-if command -v chezmoi >/dev/null; then
+if [ -f "${BINDIR}/chezmoi" ]; then
+        CZ="${BINDIR}/chezmoi"
+elif command -v chezmoi >/dev/null; then
         _log_info "chezmoi found"
         CZ="$(which chezmoi)"
 else
         _log "installing chezmoi"
-        export BINDIR="$HOME/.local/bin"
         mkdir -p "$BINDIR"
         curl -fsLS get.chezmoi.io | sh
         CZ="$BINDIR/chezmoi"
