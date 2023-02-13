@@ -26,9 +26,10 @@ REMOTE="$(ssh git@git.hrlou.net >/dev/null 2>&1 && \
 echo "Using '$REMOTE'"
 
 cz_install
+SRC="$(${CZ} source-path)"
+source "${SRC}/.assets/include.sh"
 #while ! $CZ verify $HOME/.zsh/.zshrc; do
 #	cz_install
 #done
-
-echo "Dotfiles are installed"
-echo "Please restart shell session"
+_log "dotfiles are installed"
+_log "please restart shell session"
