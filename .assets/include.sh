@@ -5,7 +5,7 @@ COLOR_INFO="\e[94m"
 END="\e[0m"
 
 __log() {
-	>&2 echo -e "dotfiles: $*"
+	>&2 printf "dotfiles: $*\n"
 }
 
 _log() {
