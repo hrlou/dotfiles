@@ -30,6 +30,7 @@ _pkg_find_all() {
 	_pkg_add vim
 	_pkg_add zsh
 	if [ "$MGR" == "dpkg" ]; then
+		_pkg_add pip python3-pip
 		_pkg_add gcc build-essential
 	fi
 }
@@ -43,8 +44,8 @@ if _cmd_check dpkg; then
         	echo "deb [arch=amd64,arm64,armhf] http://deb.volian.org/volian/ scar main" | {{ .os.super }} tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
         	curl --output - https://deb.volian.org/volian/scar.key | {{ .os.super }} tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg >"/dev/null"
         	{{ .os.super }} apt-get update >"/dev/null"
-        	{{ .os.super }} apt-get install -y python3 python3-pip >"/dev/null"
-		# this is a really crappy work around 
+        	{{ .os.super }} apt-get install -y python3 >"/dev/null"
+		# this is a really crappy work around	
 		[[ $(python3 -V | awk '{print$2}' | awk -F '.' '{print $2}') -ge 10 ]] && NALA="nala" || NALA="nala-legacy"
 		{{ .os.super }} apt-get install -y "${NALA}" >"/dev/null"
 	fi
