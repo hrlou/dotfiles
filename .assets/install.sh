@@ -11,26 +11,17 @@ else
 	CZ="$BINDIR/chezmoi"
 fi
 
-cz_install() {
-	$CZ init $REMOTE
-	$CZ update
-	$CZ init
-	$CZ apply
-}
-
-# Setup
 echo "Testing connection..."
 REMOTE="$(ssh git@git.hrlou.net >/dev/null 2>&1 && \
 	printf "git@git.hrlou.net:hrlou/dotfiles.git" || \
 	printf "https://git.hrlou.net/hrlou/dotfiles.git")"
 echo "Using '$REMOTE'"
-
-cz_install
+$CZ init $REMOTE
+$CZ update
+$CZ init
+$CZ apply
 SRC="$(${CZ} source-path)"
-# source
 . "${SRC}/.assets/include.sh"
-#while ! $CZ verify $HOME/.zsh/.zshrc; do
-#	cz_install
-#done
+
 _log "dotfiles are installed"
 _log "please restart shell session"
