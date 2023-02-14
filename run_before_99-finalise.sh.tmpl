@@ -2,17 +2,17 @@
 source '{{ .chezmoi.sourceDir }}/.assets/include.sh'
 
 if [[ "$SHELL" != "$(which zsh)" ]]; then
-	_log_info "shell is not set to zsh"
-	_log "setting shell to zsh"
+	_log_debug "shell is not set to zsh"
+	_log_info "setting shell to zsh"
 	chsh -s "$(which zsh)"
 fi
 
 {{ if .os.wsl }}
-_log "copying windows ssh keys"
+_log_info "copying windows ssh keys"
 cp $HOME/win/.ssh/id* $HOME/.ssh/
 chmod 700 $HOME/.ssh/id*
 chmod 755 $HOME/.ssh/id*.pub
 {{ else }}
-_log "generating ssh keys"
+_log_info "generating ssh keys"
 ssh-keygen -t ed25519
 {{ end }}

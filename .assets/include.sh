@@ -1,27 +1,31 @@
+#!/bin/sh
+COLOR_INFO="\e[32m"
 COLOR_ERROR="\e[31m"
+COLOR_DEBUG="\e[94m"
 COLOR_WARN="\e[33m"
-COLOR_LOG="\e[32m"
-COLOR_INFO="\e[94m"
+BOLD=$(tput bold)
 END="\e[0m"
 
-__log() {
-	>&2 printf "dotfiles: $*\n"
-}
-
 _log() {
-	__log "${COLOR_LOG}$*${END}" 
-}
-
-_log_warn() {
-	__log "${COLOR_WARN}$*${END}" 
-}
-
-_log_err() {
-	__log "${COLOR_ERROR}$*${END}" 
+	local LEVEL="$1"; local MSG="$2"
+	eval COLOR='$COLOR_'"$LEVEL"	
+	>&2 printf "[`date "+%H:%M:%S"` ${BOLD}${COLOR}${LEVEL}${END}] ${MSG}\n"
 }
 
 _log_info() {
-	__log "${COLOR_INFO}$*${END}" 
+	_log "INFO" "$*"
+}
+
+_log_err() {
+	_log "ERROR" "$*"
+}
+
+_log_debug() {
+	_log "DEBUG" "$*"
+}
+
+_log_warn() {
+	_log "WARN" "$*"
 }
 
 _cmd_check() {
