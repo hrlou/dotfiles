@@ -54,6 +54,7 @@ if _cmd_check dpkg; then
 	if [ ! -z "${PACKAGES}" ]; then
 		_log_info "installing packages..."
 		sleep 1
+		{{ .os.super }} nala update -y
 		{{ .os.super }} nala install -y ${PACKAGES}
 		_log_info "packages installed"
 	fi
