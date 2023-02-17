@@ -29,6 +29,7 @@ _pkg_find_all() {
 	_pkg_add ranger
 	_pkg_add vim
 	_pkg_add zsh
+	_pkg_add git
 	if [ "$MGR" == "dpkg" ]; then
 		_pkg_add pip python3-pip
 		_pkg_add gcc build-essential
@@ -54,7 +55,7 @@ if _cmd_check dpkg; then
 	if [ ! -z "${PACKAGES}" ]; then
 		_log_info "installing packages..."
 		sleep 1
-		{{ .os.super }} nala update -y
+		{{ .os.super }} nala update
 		{{ .os.super }} nala install -y ${PACKAGES}
 		_log_info "packages installed"
 	fi
