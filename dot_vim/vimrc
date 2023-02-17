@@ -5,3 +5,8 @@ Plug 'phanviet/vim-monokai-pro'
 Plug 'https://github.com/alker0/chezmoi.vim'
 
 call plug#end()
+
+colorscheme monokai_pro
+set relativenumber
+highlight clear LineNr
+highlight LineNr ctermfg=59 
