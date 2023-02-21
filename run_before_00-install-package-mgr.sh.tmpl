@@ -31,6 +31,7 @@ _pkg_find_all() {
 	_pkg_add zsh
 	_pkg_add git
 	if [ "$MGR" == "dpkg" ]; then
+		_pkg_add killall psmisc
 		_pkg_add pip python3-pip
 		_pkg_add gcc build-essential
 	fi
