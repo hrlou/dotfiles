@@ -11,6 +11,8 @@ export XDG_CONFIG_HOME="${HOME}/.config"
 export XDG_CACHE_HOME="${HOME}/.local/cache"
 export XDG_DATA_HOME="${HOME}/.local/share"
 export XDG_RUNTIME_DIR="${HOME}/.local/share/xdg"
+
+export GITLAB_URI="https://git.hrlou.net/"
 ## EXPORTS ##
 
 ## OPTIONS ## 
