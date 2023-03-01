@@ -2,8 +2,8 @@
 source '{{ .chezmoi.sourceDir }}/.assets/include.sh'
 
 if ! _cmd_check starship; then
-	_log_warn "starship not found"
-	_log_info "installing starship"
+	_log_warn "Starship not found"
+	_log_info "Installing starship"
 	curl -sS https://starship.rs/install.sh | {{ .os.super }} sh -s -- -y >/dev/null
-	_log_debug "starship has been installed"
+	_log_debug "Starship has been installed"
 fi

@@ -7,9 +7,7 @@ _pkg_add() {
 	[ -z ${2+x} ] && local pkg="$cmd" || local pkg="$2"
 	if ! _cmd_check $cmd; then
 		PACKAGES+="$pkg "
-		_log_debug "going to install '${pkg}'"
-	else
-		_log_debug "skipping '${pkg}'"
+		_log_debug "Going to install '${pkg}'"
 	fi
 }
 
@@ -22,27 +20,28 @@ PACKAGES=''
 
 # COMMANDS
 _pkg_find_all() {
-	_pkg_add git
-	_pkg_add htop
 	_pkg_add cmake
 	_pkg_add curl
+	_pkg_add git
+	_pkg_add golang
+	_pkg_add htop
 	_pkg_add ranger
 	_pkg_add vim
 	_pkg_add zsh
-	_pkg_add git
 	if [ "$MGR" == "dpkg" ]; then
+		_pkg_add gcc build-essential
 		_pkg_add killall psmisc
 		_pkg_add pip python3-pip
-		_pkg_add gcc build-essential
 	fi
 }
 
 # DEBIAN
 if _cmd_check dpkg; then
-	_log_info "dpkg found"
+	_log_info "DPKG Found"
 	MGR='dpkg'
-	if ! command -v nala >/dev/null; then
-		_log_info "installing nala"
+	_cmd_check nala && {{ .os.super nala }} ||  {{ .os.super }} apt-get purge nala nala-legacy
+	if ! _cmd_check nala; then
+		_log_info "Installing Nala"
         	echo "deb [arch=amd64,arm64,armhf] http://deb.volian.org/volian/ scar main" | {{ .os.super }} tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
         	curl --output - https://deb.volian.org/volian/scar.key | {{ .os.super }} tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg >"/dev/null"
         	{{ .os.super }} apt-get update >"/dev/null"
@@ -51,17 +50,18 @@ if _cmd_check dpkg; then
 		[[ $(python3 -V | awk '{print$2}' | awk -F '.' '{print $2}') -ge 10 ]] && NALA="nala" || NALA="nala-legacy"
 		{{ .os.super }} apt-get install -y "${NALA}" >"/dev/null"
 	fi
-	_log_info "searching for packages"
+	_log_info "Searching for packages..."
 	_pkg_find_all
 	if [ ! -z "${PACKAGES}" ]; then
-		_log_info "installing packages..."
+		_log_info "Installing packages..."
 		sleep 1
 		{{ .os.super }} nala update
+		{{ .os.super }} nala upgrade
 		{{ .os.super }} nala install -y ${PACKAGES}
-		_log_info "packages installed"
+		_log_info "Packages installed"
 	fi
 else
-	_log_warn "package manager could not be identified"
+	_log_warn "Package manager could not be identified; cannot install packages"
 fi
 
 unset PACKAGES
