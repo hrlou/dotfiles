@@ -39,7 +39,6 @@ _pkg_find_all() {
 if _cmd_check dpkg; then
 	_log_info "DPKG Found"
 	MGR='dpkg'
-	_cmd_check nala && {{ .os.super nala }} ||  {{ .os.super }} apt-get purge nala nala-legacy
 	if ! _cmd_check nala; then
 		_log_info "Installing Nala"
         	echo "deb [arch=amd64,arm64,armhf] http://deb.volian.org/volian/ scar main" | {{ .os.super }} tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
