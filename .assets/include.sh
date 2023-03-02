@@ -8,13 +8,10 @@ LEVEL_WARN=1
 LEVEL_ERROR=2
 LEVEL_DEBUG=3
 
-BOLD=$(tput bold)
-END="\e[0m"
-
 _log() {
 	local LEVEL_STR="$1"; local MSG="$2"
 	eval COLOR='$COLOR_'"$LEVEL_STR"
-	>&2 printf "\e[2m[\e[0m`date "+%H:%M:%S"` ${BOLD}${COLOR}${LEVEL_STR}${END}\e[2m]\e[0m ${MSG}\n"
+	>&2 printf "\e[2m[\e[0m`date "+%H:%M:%S"` ${COLOR}${LEVEL_STR}\e[0m\e[2m]\e[0m ${MSG}\n"
 }
 
 _log_info() {
