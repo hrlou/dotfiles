@@ -23,7 +23,7 @@ _pkg_find_all() {
 	_pkg_add cmake
 	_pkg_add curl
 	_pkg_add git
-	_pkg_add golang
+	_pkg_add go golang
 	_pkg_add htop
 	_pkg_add ranger
 	_pkg_add vim
@@ -37,7 +37,7 @@ _pkg_find_all() {
 
 # DEBIAN
 if _cmd_check dpkg; then
-	_log_info "DPKG Found"
+	_log_debug "DPKG Found"
 	MGR='dpkg'
 	if ! _cmd_check nala; then
 		_log_info "Installing Nala"
