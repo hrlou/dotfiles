@@ -2,12 +2,12 @@
 source '{{ .chezmoi.sourceDir }}/.assets/include.sh'
 set -eu
 
-_pkg_add() {
+pkg_add() {
 	local cmd="$1"
 	[ -z ${2+x} ] && local pkg="$cmd" || local pkg="$2"
-	if ! _cmd_check $cmd; then
+	if ! cmd_check $cmd; then
 		PACKAGES+="$pkg "
-		_log_debug "Going to install '${pkg}'"
+		log_debug "Going to install '${pkg}'"
 	fi
 }
 
@@ -19,28 +19,28 @@ MGR=''
 PACKAGES=''
 
 # COMMANDS
-_pkg_find_all() {
-	_pkg_add cmake
-	_pkg_add curl
-	_pkg_add git
-	_pkg_add go golang
-	_pkg_add htop
-	_pkg_add ranger
-	_pkg_add vim
-	_pkg_add zsh
+pkg_find_all() {
+	pkg_add cmake
+	pkg_add curl
+	pkg_add git
+	pkg_add go golang
+	pkg_add htop
+	pkg_add ranger
+	pkg_add vim
+	pkg_add zsh
 	if [ "$MGR" == "dpkg" ]; then
-		_pkg_add gcc build-essential
-		_pkg_add killall psmisc
-		_pkg_add pip python3-pip
+		pkg_add gcc build-essential
+		pkg_add killall psmisc
+		pkg_add pip python3-pip
 	fi
 }
 
 # DEBIAN
-if _cmd_check dpkg; then
-	_log_debug "DPKG Found"
+if cmd_check dpkg; then
+	log_debug "DPKG Found"
 	MGR='dpkg'
-	if ! _cmd_check nala; then
-		_log_info "Installing Nala"
+	if ! cmd_check nala; then
+		log_info "Installing Nala"
         	echo "deb [arch=amd64,arm64,armhf] http://deb.volian.org/volian/ scar main" | {{ .os.super }} tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
         	curl --output - https://deb.volian.org/volian/scar.key | {{ .os.super }} tee /etc/apt/trusted.gpg.d/volian-archive-scar-unstable.gpg >"/dev/null"
         	{{ .os.super }} apt-get update >"/dev/null"
@@ -49,18 +49,18 @@ if _cmd_check dpkg; then
 		[[ $(python3 -V | awk '{print$2}' | awk -F '.' '{print $2}') -ge 10 ]] && NALA="nala" || NALA="nala-legacy"
 		{{ .os.super }} apt-get install -y "${NALA}" >"/dev/null"
 	fi
-	_log_info "Searching for packages..."
-	_pkg_find_all
+	log_info "Searching for packages..."
+	pkg_find_all
 	if [ ! -z "${PACKAGES}" ]; then
-		_log_info "Installing packages..."
+		log_info "Installing packages..."
 		sleep 1
 		{{ .os.super }} nala update
 		{{ .os.super }} nala upgrade
 		{{ .os.super }} nala install -y ${PACKAGES}
-		_log_info "Packages installed"
+		log_info "Packages installed"
 	fi
 else
-	_log_warn "Package manager could not be identified; cannot install packages"
+	log_warn "Package manager could not be identified; cannot install packages"
 fi
 
 unset PACKAGES

@@ -14,23 +14,23 @@ _log() {
 	>&2 printf "\e[2m[\e[0m`date "+%H:%M:%S"` ${COLOR}${LEVEL_STR}\e[0m\e[2m]\e[0m ${MSG}\n"
 }
 
-_log_info() {
+log_info() {
 	_log "INFO" "$*"
 }
 
-_log_warn() {
+log_warn() {
 	_log "WARN" "$*"
 }
 
-_log_err() {
+log_err() {
 	_log "ERROR" "$*"
 }
 
-_log_debug() {
+log_debug() {
 	_log "DEBUG" "$*"
 }
 
-_cmd_check() {
+cmd_check() {
 	local cmd="$1"
 	return $(command -v $cmd >/dev/null)
 }
