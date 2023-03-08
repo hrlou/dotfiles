@@ -9,7 +9,8 @@ LEVEL_ERROR=2
 LEVEL_DEBUG=3
 
 _log() {
-	local LEVEL_STR="$1"; local MSG="$2"
+	local LEVEL_STR="$1"
+	local MSG="$2"
 	eval COLOR='$COLOR_'"$LEVEL_STR"
 	>&2 printf "\e[2m[\e[0m`date "+%H:%M:%S"` ${COLOR}${LEVEL_STR}\e[0m\e[2m]\e[0m ${MSG}\n"
 }
