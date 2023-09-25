@@ -6,3 +6,9 @@ if ! cmd_check starship; then
 	curl -sS https://starship.rs/install.sh | {{ .os.super }} sh -s -- -y >/dev/null && \
 		log_info "Starship installed" || log_err "Starship not installed"
 fi
+
+if cmd_check vim; then
+	log_info "Setting up vim..."
+	vim \
+		-c 'PlugInstall' \
+		-c 'qa!'
