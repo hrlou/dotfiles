@@ -30,10 +30,12 @@ else
 		#cp $HOME/win/.ssh/id* $HOME/.ssh/
 		for i in $HOME/win/.ssh/id*; do
 			name=`basename $i`
-			[ ! -f "$HOME/.ssh/$name" ] && \
+			[ -f "$HOME/.ssh/$name" ] && continue
+			log_info "Copying $name from Windows .ssh"
+			cp $i $HOME/.ssh/
 		done
-		#chmod 700 $HOME/.ssh/id*
-		#chmod 755 $HOME/.ssh/id*.pub
+		chmod 700 $HOME/.ssh/id*
+		chmod 755 $HOME/.ssh/id*.pub
 	fi
 	{{ else }}
 	log_info "Generating SSH keys"
