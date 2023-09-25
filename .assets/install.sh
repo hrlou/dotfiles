@@ -1,5 +1,6 @@
 #!/bin/sh
-eval "$(curl -fsLS git.hrlou.net/hrlou/dotfiles/-/raw/main/.assets/include.sh)"
+# eval "$(curl -fsLS git.hrlou.net/hrlou/dotfiles/-/raw/main/.assets/include.sh)"
+eval "$(curl -fsLS https://raw.githubusercontent.com/hrlou/dotfiles/main/.assets/include.sh)"
 export BINDIR="$HOME/.local/bin"
 
 # Install Chezmoi
