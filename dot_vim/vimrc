@@ -3,10 +3,12 @@ call plug#begin()
 Plug 'cespare/vim-toml', { 'branch': 'main' }
 Plug 'phanviet/vim-monokai-pro'
 Plug 'https://github.com/alker0/chezmoi.vim'
+Plug 'morhetz/gruvbox'
+Plug 'whatyouhide/vim-gotham'
 
 call plug#end()
 
-colorscheme monokai_pro
+colorscheme gruvbox
 set relativenumber
 highlight clear LineNr
 highlight LineNr ctermfg=59 
