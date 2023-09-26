@@ -1,5 +1,4 @@
 #!/bin/sh
-eval "$(curl -fsLS https://raw.githubusercontent.com/hrlou/dotfiles/main/.assets/include.sh)"
 export BINDIR="$HOME/.local/bin"
 if [ -f "${BINDIR}/chezmoi" ]; then
         CZ="${BINDIR}/chezmoi"
@@ -17,9 +16,7 @@ case $yn in
 	y | yes ) REMOTE="git@github.com:hrlou/dotfiles.git";;
 	* ) REMOTE="https://github.com/hrlou/dotfiles.git";;
 esac
-echo "Remote = '${REMOTE}'"
+echo "Using '${REMOTE}'"
 $CZ init $REMOTE
 $CZ apply
-SRC="$(${CZ} source-path)"
-. "${SRC}/.assets/include.sh"
-_log_info "Dotfiles are installed, please restart shell session"
+echo "Dotfiles are installed, please restart shell session"
