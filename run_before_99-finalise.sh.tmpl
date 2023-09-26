@@ -24,15 +24,15 @@ if [ -d "$HOME/win/.ssh" ]; then
 	log_debug "Windows SSH keys not found"
 else
 	log_info "Copying Windows SSH keys"
-	#cp $HOME/win/.ssh/id* $HOME/.ssh/
 	for i in $HOME/win/.ssh/id*; do
 		name=`basename $i`
 		[ -f "$HOME/.ssh/$name" ] && continue
 		log_info "Copying $name from Windows .ssh"
 		cp $i $HOME/.ssh/
 	done
+	log_info "Updating Permissions"
 	chmod 700 $HOME/.ssh/id*
-	chmod 755 $HOME/.ssh/id*.pub
+	chmod 750 $HOME/.ssh/id*.pub
 fi
 {{ else }}
 if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
@@ -40,6 +40,5 @@ if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
 	ssh-keygen -t ed25519
 fi
 {{ end }}
-fi
 
 exit 0
