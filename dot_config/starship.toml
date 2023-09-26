@@ -53,8 +53,7 @@ renamed = '👅'
 deleted = '🗑'
 
 [hostname]
-format = '[$hostname[\[$ssh_symbol\]](lavender)]($style)'
-ssh_symbol='🌐'
+format = '[[$ssh_symbol](bold blue)]( $combined)[$hostname]($style)'
 style = 'purple_blue'
 trim_at = '.'
 ssh_only = false
