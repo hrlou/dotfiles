@@ -33,3 +33,4 @@ bindkey "^[[3~" delete-char
 if [[ ( "${SHLVL}" -eq 1 && ! -o LOGIN ) && -s ${ZDOTDIR}/.zprofile ]]; then
   . ${ZDOTDIR}/.zprofile
 fi
+. "$HOME/.cargo/env"
