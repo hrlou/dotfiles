@@ -1,9 +1,6 @@
 #!/bin/sh
-# eval "$(curl -fsLS git.hrlou.net/hrlou/dotfiles/-/raw/main/.assets/include.sh)"
 eval "$(curl -fsLS https://raw.githubusercontent.com/hrlou/dotfiles/main/.assets/include.sh)"
 export BINDIR="$HOME/.local/bin"
-
-# Install Chezmoi
 if [ -f "${BINDIR}/chezmoi" ]; then
         CZ="${BINDIR}/chezmoi"
 elif command -v chezmoi >/dev/null; then
@@ -12,15 +9,15 @@ elif command -v chezmoi >/dev/null; then
 else
         _log_info "Installing chezmoi"
         mkdir -p "$BINDIR"
-        curl -fsLS get.chezmoi.io | sh
-        CZ="$BINDIR/chezmoi"
+        sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $BINDIR
+	CZ="$BINDIR/chezmoi"
 fi
-
-_log_debug "Testing connection..."
-REMOTE="$(ssh git@git.hrlou.net >/dev/null 2>&1 && \
-        printf "git@git.hrlou.net:hrlou/dotfiles.git" || \
-        printf "https://git.hrlou.net/hrlou/dotfiles.git")"
-_log_info "Using '$REMOTE'"
+read -p "Do you wish to use SSH? (y/N) " yn
+case $yn in
+	y | yes ) REMOTE="git@github.com:hrlou/dotfiles.git";;
+	* ) REMOTE="https://github.com/hrlou/dotfiles.git";;
+esac
+echo "Remote = '${REMOTE}'"
 $CZ init $REMOTE
 $CZ apply
 SRC="$(${CZ} source-path)"
