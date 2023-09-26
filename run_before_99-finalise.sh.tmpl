@@ -21,18 +21,18 @@ fi
 # SSH
 {{ if .os.wsl }}
 if [ -d "$HOME/win/.ssh" ]; then
-	log_debug "Windows SSH keys not found"
-else
 	log_info "Copying Windows SSH keys"
 	for i in $HOME/win/.ssh/id*; do
 		name=`basename $i`
-		[ -f "$HOME/.ssh/$name" ] && continue
-		log_info "Copying $name from Windows .ssh"
+		[ -f "$HOME/.ssh/${name}" ] && continue
+		log_info "Copying '${i}' to ~/.ssh/"
 		cp $i $HOME/.ssh/
 	done
-	log_info "Updating Permissions"
+	log_info "Updating Permissions..."
 	chmod 700 $HOME/.ssh/id*
 	chmod 750 $HOME/.ssh/id*.pub
+else
+	log_debug "Windows SSH keys not found"
 fi
 {{ else }}
 if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
