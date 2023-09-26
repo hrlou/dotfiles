@@ -18,5 +18,5 @@ case $yn in
 esac
 echo "Using '${REMOTE}'"
 $CZ init $REMOTE
-$CZ apply
-echo "Dotfiles are installed, please restart shell session"
+$CZ apply && \
+	echo "Dotfiles are installed, please restart shell session"
