@@ -1,4 +1,4 @@
-{{- if eq .chezmoi.os "Windows" -}}
+{{- if eq .chezmoi.os "windows" -}}
 {{- 	template "windows/run/run_before_00.ps1.tmpl" . -}}
 {{- else if eq .chezmoi.os "linux" -}}
 #!{{ lookPath "bash" }}
