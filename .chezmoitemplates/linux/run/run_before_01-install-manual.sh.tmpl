@@ -1,5 +1,4 @@
 #!{{ lookPath "bash" }}
-source '{{ .chezmoi.sourceDir }}/.assets/include.sh'
 
 if ! cmd_check starship; then
 	log_info "Installing Starship..."
@@ -11,5 +10,6 @@ if cmd_check vim; then
 	log_info "Setting up vim..."
 	vim \
 		-c 'PlugInstall' \
+		-c 'PlugClean' \
 		-c 'qa!'
 fi
