@@ -5,7 +5,7 @@
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 set -eu
-eval '{{ .chezmoi.sourceDir }}/.assets/include.sh'
+{{	include ".assets/include.sh" -}}
 {{	template "linux/run/run_before_00-install-package-mgr.sh.tmpl" . -}}
 {{ 	template "linux/run/run_before_01-install-manual.sh.tmpl" . -}}
 {{	template "linux/run/run_before_99-finalise.sh.tmpl" . -}}
