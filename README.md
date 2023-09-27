@@ -1,7 +1,6 @@
 # Installation
 
-It's as simple as
-
+## Linux
 ```sh
 sh -c "$(curl -fsLS get.hrlou.net/dotfiles)"
 ```
