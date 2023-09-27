@@ -1,5 +1,3 @@
-#!{{ lookPath "bash" }}
-
 if ! cmd_check starship; then
 	log_info "Installing Starship..."
 	curl -sS https://starship.rs/install.sh | {{ .os.super }} sh -s -- -y >/dev/null && \

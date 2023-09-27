@@ -1,6 +1,3 @@
-#!{{ lookPath "bash" }}
-set -eu
-
 pkg_add() {
 	local cmd="$1"
 	[ -z ${2+x} ] && local pkg="$cmd" || local pkg="$2"
@@ -9,9 +6,6 @@ pkg_add() {
 		log_debug "Going to install '${pkg}'"
 	fi
 }
-
-export LC_ALL=C.UTF-8
-export LANG=C.UTF-8
 
 # Make blank so test works
 MGR=''

@@ -4,7 +4,8 @@ format = """
 [┌─](pastel_purple)$username[@](pastel_purple)$hostname[:](pastel_purple)$directory\
 ([\n│ ](pastel_purple)$git_branch$git_commit$git_status)\
 ([\n│ ](pastel_purple)$rust$package)
-[└─$character](pastel_purple)"""
+[└─$character](pastel_purple)
+"""
 
 add_newline = false
 command_timeout = 1500
