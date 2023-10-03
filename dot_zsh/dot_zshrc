@@ -1,4 +1,10 @@
 #!/usr/bin/env zsh
+# MOTD
+[ -f /etc/os-release ] && source /etc/os-release || NAME="HRLou Dotfiles"	
+printf "$NAME (%s)\n" "$(zsh --version | sed 's/ (.*//g')"
+
+CODE="${HOME}/win/AppData/Local/Programs/Microsoft VS Code/bin"
+[ -d "${CODE}" ] && PATH="${PATH}:${CODE}"
 
 # Autoload functions directory.
 fpath=($ZDOTDIR/functions $fpath)
