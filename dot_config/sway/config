@@ -15,6 +15,7 @@ set $up k
 set $right l
 # Your preferred terminal emulator
 set $term x-terminal-emulator
+set $browser firefox
 set $wallpaper "/home/hrl/Pictures/wallpapers/pallas-cat-1366-768.jpg"
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -65,6 +66,9 @@ output * bg $wallpaper fill
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+   
+    # Start browser 
+    bindsym $mod+i exec $browser
 
     # Kill focused window
     bindsym $mod+Shift+q kill
