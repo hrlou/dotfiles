@@ -11,3 +11,15 @@ if cmd_check vim; then
 		-c 'PlugClean' \
 		-c 'qa!'
 fi
+
+# Install Yay on Arch
+if cmd_check pacman; then
+	{{ .os.super }} pacman -S --needed git base-devel
+	git clone https://aur.archlinux.org/yay-bin.git
+	mkdir -p ~/.local/cache
+	git clone https://aur.archlinux.org/yay.git ~/.local/cache/yay
+	cd ~/.local/cache/yay
+	makepkg -si
+	cd -
+	rm -rf yay
+fi

@@ -3,10 +3,10 @@ export BINDIR="$HOME/.local/bin"
 if [ -f "${BINDIR}/chezmoi" ]; then
         CZ="${BINDIR}/chezmoi"
 elif command -v chezmoi >/dev/null; then
-        _log_info "Chezmoi found"
+        echo "Chezmoi found"
         CZ="$(which chezmoi)"
 else
-        _log_info "Installing chezmoi"
+        echo "Installing chezmoi"
         mkdir -p "$BINDIR"
         sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $BINDIR
 	CZ="$BINDIR/chezmoi"
