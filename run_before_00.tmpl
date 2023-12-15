@@ -1,12 +1,12 @@
 {{- if eq .chezmoi.os "windows" -}}
-{{- 	template "windows/run/run_before_00.ps1.tmpl" . -}}
+{{- 	template "windows/run_before_00.ps1.tmpl" . -}}
 {{- else if eq .chezmoi.os "linux" -}}
 #!{{ lookPath "bash" }}
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 set -eu
 {{	include ".assets/include.sh" -}}
-{{	template "linux/run/run_before_00-install-package-mgr.sh.tmpl" . -}}
-{{ 	template "linux/run/run_before_01-install-manual.sh.tmpl" . -}}
-{{	template "linux/run/run_before_99-finalise.sh.tmpl" . -}}
+{{	template "linux/run_before_00-install-package-mgr.sh.tmpl" . -}}
+{{ 	template "linux/run_before_01-install-manual.sh.tmpl" . -}}
+{{	template "linux/run_before_99-finalise.sh.tmpl" . -}}
 {{- end -}}
