@@ -8,13 +8,6 @@ if cmd_check python3; then
 	fi
 fi
 
-# Shell
-if [[ "$SHELL" != "$(which zsh)" ]]; then
-	log_debug "Shell is not set to ZSH"
-	log_info "Setting shell to ZSH"
-	chsh -s "$(which zsh)"
-fi
-
 # SSH
 {{ if .os.wsl }}
 if [ -d "$HOME/win/.ssh" ]; then
@@ -37,5 +30,7 @@ if [ ! -f "$HOME/.ssh/id_ed25519" ]; then
 	ssh-keygen -t ed25519
 fi
 {{ end }}
+
+log_info "Please set shell to zsh if not so!"
 
 exit 0
