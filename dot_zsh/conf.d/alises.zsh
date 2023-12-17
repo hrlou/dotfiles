@@ -2,9 +2,10 @@
 alias cls='clear'
 alias cz='chezmoi'
 alias ls='ls --color=auto'
-alias ll='ls -ahlF --color=auto'
+alias ll='ls -ahlF'
 alias la='ls -A'
-alias l='ls -CF'
+alias l1='ls -1'
+alias l='l1 -CF'
 alias grep='grep --color=auto'
 alias h='fc -l'
 alias j=jobs
