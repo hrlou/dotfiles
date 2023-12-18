@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 alias cls='clear'
+alias code='vscodium'
 alias cz='chezmoi'
 alias ls='ls --color=auto'
 alias ll='ls -ahlF'
