@@ -51,7 +51,7 @@ renamed = ''
 deleted = ''
 
 [hostname]
-format = '[$hostname]($style) via [$ssh_symbol](bold blue)'
+format = '[$hostname]($style)[ via [$ssh_symbol](bold blue)]'
 style = 'purple_blue'
 ssh_symbol = '󰀂'
 trim_at = '.'
