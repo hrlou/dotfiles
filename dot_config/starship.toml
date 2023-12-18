@@ -8,7 +8,7 @@ format = """
 """
 
 add_newline = false
-command_timeout = 1500
+command_timeout = 3000
 palette = 'self'
 
 [palettes.self]
@@ -45,9 +45,9 @@ conflicted = '󱓌'
 up_to_date = '󱓏'
 untracked = '󰡯'
 stashed = '󰩪'
-modified = ''
-staged = '[++\($count\)](green)'
-renamed = ''
+modified = ''
+staged = '[\(⇡$count\)](green)'
+renamed = ''
 deleted = ''
 
 [hostname]
