@@ -1,3 +1,10 @@
+# Make blank so test works
+MGR=''
+PACKAGES=''
+
+# pkg_add ${binary} ${package_name}
+# if ${binary} is same as ${package_name}, i.e. vim
+# pkg_add ${package_name}
 pkg_add() {
 	local cmd="$1"
 	[ -z ${2+x} ] && local pkg="$cmd" || local pkg="$2"
@@ -7,11 +14,7 @@ pkg_add() {
 	fi
 }
 
-# Make blank so test works
-MGR=''
-PACKAGES=''
-
-# COMMANDS
+# find all packages needed to support the dotfiles
 pkg_find_all() {
 	pkg_add cmake
 	pkg_add curl

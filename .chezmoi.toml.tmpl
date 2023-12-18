@@ -1,6 +1,7 @@
 {{- $email := promptStringOnce . "email" "Email address" -}}
 {{- $name := promptStringOnce . "name" "Your Name" -}}
 {{- $domain := promptStringOnce . "domain" "Your Domain" -}}
+{{- $use_gui := promptBoolOnce . "use_gui" "Will this machine be used Graphically" -}} 
 {{/* find superuser command */}}
 {{- $dummy := set . "super" false -}}
 {{- if (index (lookPath "sudo")) -}}
@@ -30,6 +31,7 @@
 email = {{ $email | quote }}
 name = {{ $name | quote }}
 domain = {{ $domain | quote }}
+use_gui = {{ $use_gui }}
 
 [data.os]
 distro = {{ .distro | quote }}

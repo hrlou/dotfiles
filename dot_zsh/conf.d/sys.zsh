@@ -21,6 +21,8 @@ elif (( $+commands[rpm] )); then
 	(( $+commands[yum] )) && PKG="yum" 
 	(( $+commands[dnf] )) && PKG="dnf"
 	(( $+commands[zypper] )) && PKG="zypper"
+elif (( $+commands[pacman] )); then
+	PKG="pacman"
 fi
 export PKG="$(which "$PKG")"
 # PKG #
