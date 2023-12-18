@@ -1,10 +1,10 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[┌─](pastel_purple)$username[@](pastel_purple)$hostname[:](pastel_purple)$directory\
+[┌─](pastel_purple)$username$hostname[:](pastel_purple)$directory\
 ([\n│ ](pastel_purple)$git_branch$git_commit$git_status)\
 ([\n│ ](pastel_purple)$rust$package)
-[└─$character](pastel_purple)
+[└─ ](pastel_purple)
 """
 
 add_newline = false
@@ -19,9 +19,6 @@ joker_purple = '#4a0336'
 pastel_purple = '#c3b1e1'
 pastel_orange = '#ff964f'
 
-[character]
-success_symbol = '>'
-error_symbol = 'x'
 
 [directory]
 format = '[$path]($style) '
@@ -51,11 +48,11 @@ renamed = ''
 deleted = ''
 
 [hostname]
-format = '[[$ssh_symbol](bold)$hostname]($style)'
+format = '[@](pastel_purple)[$hostname]($style)'
 style = 'purple_blue'
-ssh_symbol = '󰀂'
+ssh_symbol = ''
 trim_at = '.'
-ssh_only = false
+ssh_only = true
 disabled = false
 
 [username]
