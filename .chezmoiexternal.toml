@@ -12,3 +12,8 @@
 	type = "git-repo"
 	url = "https://github.com/dexpota/kitty-themes"
 	refreshPeriod = "168h"
+
+[".vim/external/dracula"]
+	type = "git-repo"
+	url = " https://github.com/dracula/vim"
+	refreshPeriod = "168h"
