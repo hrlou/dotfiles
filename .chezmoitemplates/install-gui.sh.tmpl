@@ -1,0 +1,22 @@
+icons_dir="/usr/share/icons"
+themes_dir="/usr/share/themes"
+tmp_dir="${HOME}/.cache/tmp"
+rm -rf "${tmp_dir}"
+
+# Install Icons
+if [ ! -d "${icons_dir}/Colloid-dracula" ]; then
+	log_info "Installing Colloid..."
+	mkdir -p "${tmp_dir}/colloid"
+	git clone "https://github.com/vinceliuice/Colloid-icon-theme" "${tmp_dir}/colloid"
+	{{ .os.super }} "${tmp_dir}/colloid/install.sh" -s dracula -t purple
+	rm -rf "${tmp_dir}"
+	gtk-update-icon-cache
+fi
+
+# Install GTK Theme
+if [ ! -d "${themes_dir}/Dracula" ]; then
+	log_info "Installing Dracula..."
+fi
+
+log_info "Update gsettings..."
+gsettings set org.gnome.desktop.interface icon-theme "Colloid-purple-dracula-dark"

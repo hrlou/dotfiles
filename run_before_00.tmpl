@@ -2,7 +2,10 @@
 export LC_ALL=C.UTF-8
 export LANG=C.UTF-8
 set -eu
-{{	include ".assets/include.sh" -}}
-{{	template "install-pkg.sh.tmpl" . -}}
-{{ 	template "install-manual.sh.tmpl" . -}}
-{{	template "install-finalise.sh.tmpl" . -}}
+{{  include ".assets/include.sh" -}}
+{{  template "install-pkg.sh.tmpl" . -}}
+{{- if .use_gui -}}
+{{  template "install-gui.sh.tmpl" . -}}
+{{- end -}}
+{{  template "install-manual.sh.tmpl" . -}}
+{{  template "install-finalise.sh.tmpl" . -}}
