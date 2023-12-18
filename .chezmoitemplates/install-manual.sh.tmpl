@@ -24,10 +24,12 @@ fi
 
 # Install Icons
 if [ -d "${HOME}/.themes/colloid" ]; then
-	local icons="/usr/share/icons"
-	if [ ! -d "${icons}/Colloid-dracula" ]; then
+	icons_dir="/usr/share/icons"
+	if [ ! -d "${icons_dir}/Colloid-dracula" ]; then
+		log_info "Installing Icons..."
 		{{ .os.super }} ~/.themes/colloid/install.sh -s dracula 
 		gtk-update-icon-cache
 	fi
+	log_info "Setting icon theme"
 	gsettings set org.gnome.desktop.interface icon-theme "Colloid-dracula-dark"
 fi
