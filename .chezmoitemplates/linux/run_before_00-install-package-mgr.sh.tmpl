@@ -59,13 +59,13 @@ if cmd_check dpkg; then
 # ARCH #
 elif cmd_check pacman; then
 	log_debug "Pacman Found"
-	{{ .os.super }} pacman -Syyu >"/dev/null"
+	yes | {{ .os.super }} pacman -Sy >"/dev/null"
 	log_info "Searching for packages..."
 	pkg_find_all
 	if [ ! -z "${PACKAGES}" ]; then
 		log_info "Installing packages..."
 		sleep 1
-		{{ .os.super }} pacman -Sy ${PACKAGES}
+		{{ .os.super }} pacman -S ${PACKAGES}
 		log_info "Packages installed"
 	fi
 else
