@@ -24,6 +24,7 @@ pkg_find_all() {
 	pkg_add ranger
 	pkg_add vim
 	pkg_add zsh
+	pkg_add wget
 	if [ "$MGR" == "dpkg" ]; then
 		pkg_add go golang
 		pkg_add gcc build-essential
@@ -67,8 +68,7 @@ elif cmd_check pacman; then
 	pkg_find_all
 	if [ ! -z "${PACKAGES}" ]; then
 		log_info "Installing packages..."
-		sleep 1
-		{{ .os.super }} pacman -S ${PACKAGES}
+		yes | {{ .os.super }} pacman -S ${PACKAGES}
 		log_info "Packages installed"
 	fi
 else
