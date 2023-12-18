@@ -22,4 +22,6 @@ if cmd_check pacman && ! cmd_check yay; then
 	rm -rf ~/.local/cache/yay
 fi
 
-if [ -d 
+if [ -d "${HOME}/.themes/colloid" ]; then
+	{{ .os.super }} ~/.themes/colloid/install.sh -s dracula 
+fi
