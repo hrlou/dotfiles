@@ -22,6 +22,12 @@ if cmd_check pacman && ! cmd_check yay; then
 	rm -rf ~/.local/cache/yay
 fi
 
+# Install Icons
 if [ -d "${HOME}/.themes/colloid" ]; then
-	{{ .os.super }} ~/.themes/colloid/install.sh -s dracula 
+	local icons="/usr/share/icons"
+	if [ ! -d "${icons}/Colloid-dracula" ]; then
+		{{ .os.super }} ~/.themes/colloid/install.sh -s dracula 
+		gtk-update-icon-cache
+	fi
+	gsettings set org.gnome.desktop.interface icon-theme "Colloid-dracula-dark"
 fi
