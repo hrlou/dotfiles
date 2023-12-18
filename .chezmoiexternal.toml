@@ -15,5 +15,5 @@
 
 [".vim/external/dracula"]
 	type = "git-repo"
-	url = " https://github.com/dracula/vim"
+	url = " https://github.com/dracula/vim.git"
 	refreshPeriod = "168h"
