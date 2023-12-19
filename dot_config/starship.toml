@@ -1,10 +1,10 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
-[┌─](pastel_purple)$username$hostname[:](pastel_purple)$directory\
-([\n│ ](pastel_purple)$git_branch$git_commit$git_status)\
-([\n│ ](pastel_purple)$rust$package)
-[└─ ](pastel_purple)
+[┌─](green)$username$hostname[:](pastel_purple)$directory\
+([\n│ ](green)$git_branch$git_commit$git_status)\
+([\n│ ](green) $rust$package)
+[└─ ](green)
 """
 
 add_newline = false
@@ -57,7 +57,7 @@ disabled = false
 
 [username]
 format = ' [$user]($style)'
-style_user = 'lilac'
-style_root = 'black bold'
+style_user = 'blue'
+style_root = 'red bold'
 disabled = false
 show_always = true
