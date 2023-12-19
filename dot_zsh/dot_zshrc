@@ -1,7 +1,6 @@
 #!/usr/bin/env zsh
 # MOTD
-[ -f /etc/os-release ] && source /etc/os-release || NAME="HRLou Dotfiles"	
-printf "$NAME (%s)\n" "$(zsh --version | sed 's/ (.*//g')"
+source $HOME/.zsh/motd.zsh
 
 # Autoload functions directory.
 fpath=($ZDOTDIR/functions $fpath)
