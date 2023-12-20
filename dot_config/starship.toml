@@ -3,7 +3,7 @@
 format = """
 [┌─](green)$username$hostname[:](pastel_purple)$directory\
 ([\n│ ](green)$git_branch$git_commit$git_status)\
-([\n│ ](green) $rust$package)
+([\n│ ](green)$rust$package)
 [└─ ](green)
 """
 
@@ -19,7 +19,6 @@ joker_purple = '#4a0336'
 pastel_purple = '#c3b1e1'
 pastel_orange = '#ff964f'
 
-
 [directory]
 format = '[$path]($style) '
 style = 'gray'
@@ -28,7 +27,7 @@ truncation_length = 4
 truncation_symbol = '…/'
 
 [git_branch]
-format = '$remote_name on [$symbol $branch(:$remote_branch)]($style)'
+format = ' $remote_name on [$symbol $branch(:$remote_branch)]($style)'
 symbol = ''
 style = 'pastel_orange'
 
@@ -46,6 +45,10 @@ modified = ''
 staged = '[\(⇡$count\)](green)'
 renamed = ''
 deleted = ''
+
+[rust]
+format='$symbol $package via [($version)]($style)'
+symbol=''
 
 [hostname]
 format = '[@](pastel_purple)[$hostname]($style)'
