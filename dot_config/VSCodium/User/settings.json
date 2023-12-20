@@ -4,5 +4,6 @@
         "asvetliakov.vscode-neovim": 1
     },
     "window.zoomLevel": 1,
-    "editor.fontFamily": "'FantasqueSansM Nerd Font Mono', 'Regular'"
+    "editor.fontFamily": "'FantasqueSansM Nerd Font Mono', 'Regular'",
+    "workbench.productIconTheme": "material-product-icons"
 }
