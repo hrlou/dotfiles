@@ -9,15 +9,10 @@ format = """
 
 add_newline = false
 command_timeout = 3000
-palette = 'self'
+palette = 'custom'
 
-[palettes.self]
-purple_blue = '#603fef'
-lavender = '#e6e6fa'
-lilac = '#b65fcf'
-joker_purple = '#4a0336'
-pastel_purple = '#c3b1e1'
-pastel_orange = '#ff964f'
+[palettes.custom]
+git_orange = '#ff964f'
 
 [directory]
 format = '[$path]($style) '
@@ -52,7 +47,7 @@ symbol=''
 
 [hostname]
 format = '[@](pastel_purple)[$hostname]($style)'
-style = 'purple_blue'
+style = 'purple bold'
 ssh_symbol = ''
 trim_at = '.'
 ssh_only = true
