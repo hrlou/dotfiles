@@ -46,8 +46,8 @@ format='$symbol $package via [($version)]($style)'
 symbol=''
 
 [hostname]
-format = '[@](pastel_purple)[$hostname]($style)'
-style = 'purple bold'
+format = '[@](white)[$hostname]($style)'
+style = 'blue'
 ssh_symbol = ''
 trim_at = '.'
 ssh_only = true
