@@ -1,8 +1,5 @@
 #!/usr/bin/env zsh
-
-if [[ ! -z "${SSH_TTY}" ]]; then
-	export TERM="xterm"
-fi
+[ ! -z ${SSH_TTY} ]] && export TERM="xterm"
 
 ## EXPORTS ##
 export PROMPT='%F{red}%n@%m%f:%F{blue}%40<...<%~%<<%f$ '
