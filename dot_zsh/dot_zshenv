@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-if [ ! -z "${SSH_TTY}" ] && [ TERM == "xterm-kitty" ]; then
+if [[ ! -z "${SSH_TTY}" ]] && [[ TERM == "xterm-kitty" ]]; then
 	export TERM="xterm"
 fi
 
