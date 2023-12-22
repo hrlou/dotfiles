@@ -1,5 +1,9 @@
 #!/usr/bin/env zsh
 
+if [ ! -z "${SSH_TTY}" ] && [ TERM == "xterm-kitty" ]; then
+	export TERM="xterm"
+fi
+
 ## EXPORTS ##
 export PROMPT='%F{red}%n@%m%f:%F{blue}%40<...<%~%<<%f$ '
 export ZDOTDIR="${HOME}/.zsh"
