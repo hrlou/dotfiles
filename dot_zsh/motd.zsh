@@ -5,10 +5,12 @@ ZSH_NAME="$(zsh --version | sed 's/ (.*//g')"
 KERNEL_VERSION="$(uname -r)"
 
 # LOGO
-if [[ "${LOGO}" == "archlinux-logo" ]]; then 	
+if [[ "${NAME}" == "Arch Linux" ]]; then 	
 	LOGO="󰣇"
+elif [[ "${NAME}" == "Debian GNU/Linux" ]]; then
+	LOGO=""
 else
-	LOGO=""
+	LOGO=""
 fi
 emod="  "
 
