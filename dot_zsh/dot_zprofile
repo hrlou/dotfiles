@@ -1,6 +1,7 @@
 #!/usr/bin/env zsh
 
-[ ! -z ${SSH_TTY} ]] && export TERM="xterm"
+[[ ! -z ${SSH_TTY} ]] && export TERM="xterm"
+
 export BROWSER='firefox'
 export EDITOR='vim'
 export VISUAL='vim'
