@@ -47,7 +47,7 @@ symbol=''
 
 [hostname]
 format = '[@](white)[$hostname]($style)'
-style = 'blue'
+style = 'cyan'
 ssh_symbol = ''
 trim_at = '.'
 ssh_only = true
