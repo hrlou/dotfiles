@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 
-[[ ! -z ${SSH_TTY} ]] && export TERM="xterm"
+[[ ! -z ${SSH_TTY} ]] && export TERM="xterm-256color"
 
 export BROWSER='firefox'
 export EDITOR='vim'
