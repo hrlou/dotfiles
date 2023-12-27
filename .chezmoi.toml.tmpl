@@ -1,7 +1,14 @@
 {{- $email := promptStringOnce . "email" "Email address" -}}
 {{- $name := promptStringOnce . "name" "Your Name" -}}
 {{- $domain := promptStringOnce . "domain" "Your Domain" -}}
+{{- $host_choices := list "desktop" "laptop" "server" "termux" -}}
+{{- $host_type := promptChoiceOnce . "host_type" "Host Type" $host_choices -}}
 {{- $use_gui := promptBoolOnce . "use_gui" "Will this machine be used Graphically" -}} 
+{{- if ($use_gui) -}}
+{{- $theme_choices := list "nord" "dracula" -}}
+{{- $theme_type := promptChoiceOnce . "theme_type" "Color Theme" $theme_choices -}}
+{{- end -}}
+
 {{/* find superuser command */}}
 {{- $dummy := set . "super" false -}}
 {{- if (index (lookPath "sudo")) -}}
@@ -32,7 +39,10 @@ email = {{ $email | quote }}
 name = {{ $name | quote }}
 domain = {{ $domain | quote }}
 use_gui = {{ $use_gui }}
-
+{{ if ($use_gui) }}
+[data.gui]
+color_theme = {{ $theme_type | quote }}
+{{ end }}
 [data.os]
 distro = {{ .distro | quote }}
 super = {{ 
