@@ -10,7 +10,8 @@
 
 [".config/kitty/nord.conf"]
 	type = "file"
-	url = "https://raw.githubusercontent.com/connorholyday/nord-kitty/master/nord.conf"
+	# url = "https://raw.githubusercontent.com/connorholyday/nord-kitty/master/nord.conf"
+	url = "https://raw.githubusercontent.com/m8mble/nord-kitty/master/nord-kitty.conf"	
 	refreshPeriod = "168h"
 
 [".config/kitty/dracula.conf"]
