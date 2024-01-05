@@ -25,7 +25,7 @@ pkg_find_all() {
 	pkg_add vim
 	pkg_add zsh
 	pkg_add wget
-	if [ "$MGR" == "dpkg" ]; then
+	if [ "$MGR" == "apt" ]; then
 		pkg_add go golang
 		pkg_add gcc build-essential
 		pkg_add killall psmisc
@@ -37,9 +37,9 @@ pkg_find_all() {
 }
 
 # DEBIAN
-if cmd_check dpkg; then
+if cmd_check apt; then
 	log_debug "DPKG Found"
-	MGR='dpkg'
+	MGR='apt'
 	if ! cmd_check nala; then
 		log_info "Installing Nala"
         	echo "deb [arch=amd64,arm64,armhf] http://deb.volian.org/volian/ scar main" | {{ .os.super }} tee /etc/apt/sources.list.d/volian-archive-scar-unstable.list
