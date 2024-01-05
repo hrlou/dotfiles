@@ -11,8 +11,8 @@ export SUPER=$(sh -c "which $SUPER")
 # SUPER #
 
 # PKG #
-if (( $+commands[dpkg] )); then
-	PKG="dpkg"
+if (( $+commands[apt] )); then
+	PKG="apt"
 	(( $+commands[apt] )) && PKG="apt"
 	(( $+commands[apt-get] )) && PKG="apt-get"
 	(( $+commands[nala] )) && PKG="nala"
