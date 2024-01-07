@@ -42,8 +42,13 @@ renamed = ''
 deleted = ''
 
 [rust]
-format='$symbol $package via [($version)]($style)'
+format='$symbol $package via [($version - )]($style)'
 symbol=''
+
+[package]
+format = '[($symbol $version)]($style)'
+style = '208 bold'
+symbol = ''
 
 [hostname]
 format = '[@](white)[$hostname]($style)'
