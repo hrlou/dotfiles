@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+NO_FORMAT="\033[0m"
+F_BOLD="\033[1m"
+C_GREEN1="\033[38;5;46m"
+C_CYAN1="\033[38;5;51m"
+C_GREY3="\033[48;5;232m"
+chezmoi verify &&
+	chezmoi update && \
+	reload && \
+	clear && \
+	echo -e "${F_BOLD}${C_GREEN1}${C_GREY3}Updated!${NO_FORMAT}" || \
+	echo -e "${F_BOLD}${C_CYAN1}${C_GREY3}Already up to date.${NO_FORMAT}"
+# vim: ft=zsh
