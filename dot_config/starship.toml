@@ -42,7 +42,7 @@ renamed = ''
 deleted = ''
 
 [rust]
-format='$symbol $package via [($version - )]($style)'
+format='$symbol $package via [($version)]($style) - '
 symbol=''
 
 [package]
