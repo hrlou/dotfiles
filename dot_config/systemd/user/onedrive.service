@@ -1,8 +1,0 @@
-[Unit]
-Description=OneDrive Sync
-
-[Service]
-ExecStart=sh -c "rclone --vfs-cache-mode writes mount \"OneDrive\": ~/OneDrive"
-
-[Install]
-WantedBy=default.target
