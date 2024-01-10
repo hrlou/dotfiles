@@ -4,6 +4,8 @@ Plug 'alker0/chezmoi.vim'
 Plug 'cespare/vim-toml'
 Plug 'sainnhe/sonokai'
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'nordtheme/vim', { 'as': 'nord' }
+Plug 'morhetz/gruvbox'
 
 call plug#end()
 
