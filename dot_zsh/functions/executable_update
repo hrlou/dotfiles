@@ -4,7 +4,7 @@ F_BOLD="\033[1m"
 C_GREEN1="\033[38;5;46m"
 C_CYAN1="\033[38;5;51m"
 C_GREY3="\033[48;5;232m"
-chezmoi verify &&
+chezmoi verify ||
 	chezmoi update && \
 	reload && \
 	clear && \
