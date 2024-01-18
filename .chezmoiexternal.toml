@@ -9,12 +9,6 @@
 	url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
 	refreshPeriod = "168h"
 
-# nvim pakage manager
-[".local/share/nvim/site/pack/packer/start/packer.nvim"]
-	type = "git-repo"
-	url = "https://github.com/wbthomason/packer.nvim"
-	refreshPeriod = "168h"
-
 [".config/kitty/themes/nord.conf"]
 	type = "file"
 	# url = "https://raw.githubusercontent.com/connorholyday/nord-kitty/master/nord.conf"
