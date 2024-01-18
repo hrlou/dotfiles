@@ -21,6 +21,6 @@ require("lazy").setup({
 	{ 'nordtheme/vim', name  = 'nord' }
 })
 
-vim.o.background = {{ .style.color_mode }} 
+vim.o.background = {{ .style.color_mode | quote }} 
 vim.cmd([[colorscheme {{ .style.color_scheme }}]])
 vim.wo.relativenumber = true
