@@ -1,16 +1,17 @@
-if cmd_check pacman && ! cmd_check yay; then
+if cmd_check pacman && ! cmd_check paru; then
 	mkdir -p ~/.local/cache
-	git clone https://aur.archlinux.org/yay.git ~/.local/cache/yay
-	cd ~/.local/cache/yay
+	git clone https://aur.archlinux.org/paru.git ~/.local/cache/yay
+	cd ~/.local/cache/paru
 	makepkg -si
 	cd -
-	rm -rf ~/.local/cache/yay
+	rm -rf ~/.local/cache/paru
 fi
 
-yes | yay -S --needed \
+yes | paru -S --needed \
        	python-pillow \
 	gtk-engine-murrine \
 	gnome-shell-extension-blur-my-shell \
 	qgnomeplatform-qt5-git \
 	qgnomeplatform-qt6-git \
-	nnn-nerd
+	nnn-nerd \
+# vim: ft=bash
