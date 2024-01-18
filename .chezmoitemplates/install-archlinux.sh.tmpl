@@ -1,3 +1,12 @@
+if cmd_check pacman && ! cmd_check yay; then
+	mkdir -p ~/.local/cache
+	git clone https://aur.archlinux.org/yay.git ~/.local/cache/yay
+	cd ~/.local/cache/yay
+	makepkg -si
+	cd -
+	rm -rf ~/.local/cache/yay
+fi
+
 yay -S --needed \
        	python-pillow \
 	gtk-engine-murrine \
