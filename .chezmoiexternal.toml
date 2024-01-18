@@ -1,11 +1,18 @@
+# ZSH package manager
 [".local/share/zinit"]
 	type = "git-repo"
 	url = "https://github.com/zdharma-continuum/zinit"
 	refreshPeriod = "168h"
-
+# vim package manager
 [".vim/autoload/plug.vim"]
 	type = "file"
 	url = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+	refreshPeriod = "168h"
+
+# nvim pakage manager
+[".local/share/nvim/site/pack/packer/start/packer.nvim"]
+	type = "git-repo"
+	url = "https://github.com/wbthomason/packer.nvim"
 	refreshPeriod = "168h"
 
 [".config/kitty/themes/nord.conf"]
