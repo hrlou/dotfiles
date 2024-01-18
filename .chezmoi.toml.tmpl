@@ -39,6 +39,9 @@ email = {{ $email | quote }}
 name = {{ $name | quote }}
 domain = {{ $domain | quote }}
 use_gui = {{ $use_gui }}
+local_dir = {{ .chezmoi.homeDir }}/.local
+config_dir = {{ .chezmoi.homeDir }}/.config
+scratch = {{ .chezmoi.homeDir }}/.local/cache/hrlou
 
 [data.os]
 distro = {{ .distro | quote }}
