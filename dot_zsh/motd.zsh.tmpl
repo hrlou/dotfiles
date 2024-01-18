@@ -1,24 +1,22 @@
 #!/usr/bin/env zsh
 
-[ -f /etc/os-release ] && source /etc/os-release || PRETTY_NAME="Terminal"
+[ -f /etc/os-release ] && source /etc/os-release || \
+	PRETTY_NAME="Unknown POSIX"
 ZSH_NAME="$(zsh --version | sed 's/ (.*//g')"
 KERNEL_VERSION="$(uname -r)"
-# IS_ARCH=false
+DELIM="  "
 
-# LOGO
-if [[ "${NAME}" == "Arch Linux" ]]; then 	
-	# IS_ARCH=true
+if [[ "${NAME}" == "Arch Linux" ]]; then
 	LOGO="󰣇"
-elif [[ "${NAME}" == "Debian GNU/Linux" ]]; then
-	LOGO=""
 else
-	LOGO=""
+	LOGO=""
+	echo -e "${DELIM}Dotfiles only officially supported on Arch Linux and its derivatives"
+	echo -e "${DELIM}Some packages and features may be limited\n" 
 fi
-emod="  "
 
-[ $IS_ARCH == true ] && printf "${emod}Dotfiles are not officially supported on non-arch based distributions\!\n${emod}Some packages and features may be limited" 
-chezmoi verify || printf "󰚰${emod}Dotfiles Update Available!\n"
-printf "${emod}${ZSH_NAME}\n"
-printf "${LOGO}${emod}${PRETTY_NAME}\n"
-printf "${emod}Linux [${KERNEL_VERSION}]\n"
+chezmoi verify && echo -e "󰚰${DELIM}Dotfiles Update Available!"
+echo -e "${DELIM}${ZSH_NAME}"
+echo -e "${LOGO}${DELIM}${PRETTY_NAME}"
+echo -e "${DELIM}Linux [${KERNEL_VERSION}]"
+
 # vim: ft=zsh
