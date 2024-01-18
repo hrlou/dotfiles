@@ -1,6 +1,10 @@
-include themes/{{ .style.color_scheme }}.conf
-wayland_titlebar_color system 
-background_opacity	0.85
-dynamic_background_opacity yes
 linux_display_server x11
+wayland_titlebar_color system 
+dynamic_background_opacity yes
+background_opacity	0.85
+
+# font 
 font_family FantasqueSansM Nerd Font Regular
+font_size 18.0
+
+include themes/{{ .style.color_scheme }}.conf
