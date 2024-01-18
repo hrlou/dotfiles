@@ -14,11 +14,12 @@ unset _rcfile
 
 source "${ZINIT_HOME}/zinit.zsh"
 zinit pack for fzf
-zinit light zsh-users/zsh-syntax-highlighting
+zinit turbo zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
-zinit light marlonrichert/zsh-autocomplete
 zinit light zsh-users/zsh-history-substring-search
+zinit turbo hlissner/zsh-autopair 
+zinit light marlonrichert/zsh-autocomplete
 zinit light jeffreytse/zsh-vi-mode
 zinit ice depth=1
 
