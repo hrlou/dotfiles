@@ -1,6 +1,6 @@
 if cmd_check pacman && ! cmd_check paru; then
-	mkdir -p ~/.local/cache
-	git clone https://aur.archlinux.org/paru.git ~/.local/cache/yay
+	mkdir -p ~/.local/cache/paru
+	git clone https://aur.archlinux.org/paru.git ~/.local/cache/paru
 	cd ~/.local/cache/paru
 	makepkg -si
 	cd -
