@@ -3,9 +3,11 @@
 [ -f /etc/os-release ] && source /etc/os-release || PRETTY_NAME="Terminal"
 ZSH_NAME="$(zsh --version | sed 's/ (.*//g')"
 KERNEL_VERSION="$(uname -r)"
+IS_ARCH=false
 
 # LOGO
 if [[ "${NAME}" == "Arch Linux" ]]; then 	
+	IS_ARCH=true
 	LOGO="󰣇"
 elif [[ "${NAME}" == "Debian GNU/Linux" ]]; then
 	LOGO=""
@@ -14,6 +16,7 @@ else
 fi
 emod="  "
 
+[ $IS_ARCH == true ] && printf "${emod}Dotfiles are not officially supported on non-arch based distributions\!\n${emod}Some packages and features may be limited" 
 chezmoi verify || printf "󰚰${emod}Dotfiles Update Available!\n"
 printf "${emod}${ZSH_NAME}\n"
 printf "${LOGO}${emod}${PRETTY_NAME}\n"
