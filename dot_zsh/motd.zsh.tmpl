@@ -3,11 +3,11 @@
 [ -f /etc/os-release ] && source /etc/os-release || PRETTY_NAME="Terminal"
 ZSH_NAME="$(zsh --version | sed 's/ (.*//g')"
 KERNEL_VERSION="$(uname -r)"
-IS_ARCH=false
+# IS_ARCH=false
 
 # LOGO
 if [[ "${NAME}" == "Arch Linux" ]]; then 	
-	IS_ARCH=true
+	# IS_ARCH=true
 	LOGO="󰣇"
 elif [[ "${NAME}" == "Debian GNU/Linux" ]]; then
 	LOGO=""
