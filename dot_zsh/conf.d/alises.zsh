@@ -1,6 +1,5 @@
 #!/usr/bin/env zsh
 alias cls='clear'
-alias code='vscodium'
 alias cz='chezmoi'
 alias fetch='neofetch'
 alias ls='ls --color=auto'
