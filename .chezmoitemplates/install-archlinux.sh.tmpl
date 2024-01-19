@@ -8,7 +8,7 @@ if cmd_check pacman && ! cmd_check paru; then
 fi
 
 {{ if eq .chezmoi.uid "0" }}
-_log_warn "Cannot install packages as root!"
+log_warn "Cannot install packages as root!"
 {{ else }}
 yes | paru -S --needed \
        	python-pillow \
@@ -17,6 +17,7 @@ yes | paru -S --needed \
 	qgnomeplatform-qt5-git \
 	qgnomeplatform-qt6-git \
 	nnn-nerd \
+	unimatrix
 {{ end }}
 # vim: ft=bash
 
