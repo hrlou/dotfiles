@@ -1,8 +1,8 @@
 {{- $email := promptStringOnce . "email" "Email address" -}}
 {{- $name := promptStringOnce . "name" "Your Name" -}}
 {{- $domain := promptStringOnce . "domain" "Your Domain" -}}
-{{- $host_choices := list "desktop" "laptop" "server" "termux" -}}
-{{- $host := promptChoiceOnce . "host" "Host Type" $host_choices -}}
+{{- $chassis_choices := list "desktop" "laptop" "server" "termux" -}}
+{{- $chassis := promptChoiceOnce . "chassis" "Host Type" $chassis_choices -}}
 {{- $use_gui := promptBoolOnce . "use_gui" "Will this machine be used Graphically" -}} 
 {{- $color_mode_choices := list "dark" "light" -}}
 {{- $color_mode := promptChoiceOnce . "color_mode" "Color Mode" $color_mode_choices -}}
@@ -38,6 +38,7 @@
 email = {{ $email | quote }}
 name = {{ $name | quote }}
 domain = {{ $domain | quote }}
+chassis = {{ $chassis | quote }} 
 use_gui = {{ $use_gui }}
 
 [data.os]
