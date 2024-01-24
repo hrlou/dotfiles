@@ -5,6 +5,10 @@ background_opacity	0.85
 
 # font 
 font_family FantasqueSansM Nerd Font Regular
+{{- if eq .chassis "desktop" -}} 
 font_size 18.0
+{{- else -}}
+font_size 16.0
+{{- end -}}
 
 include themes/{{ .style.color_scheme }}.conf
