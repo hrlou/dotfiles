@@ -1,0 +1,7 @@
+#!/usr/bin/env zsh
+# exit if "$1" is not a directory
+[ -d "$1" ] || return 1
+cd "$1" 
+fzf
+cd -
+# vim: ft=zsh
