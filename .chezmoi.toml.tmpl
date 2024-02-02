@@ -6,7 +6,7 @@
 {{- $use_gui := promptBoolOnce . "use_gui" "Will this machine be used Graphically" -}} 
 {{- $color_mode_choices := list "dark" "light" -}}
 {{- $color_mode := promptChoiceOnce . "color_mode" "Color Mode" $color_mode_choices -}}
-{{- $color_scheme_choices := list "nord" "dracula" "gruvbox"  -}}
+{{- $color_scheme_choices := list "nord" "dracula" "gruvbox" "tokyonight" -}}
 {{- $color_scheme := promptChoiceOnce . "color_scheme" "Color Theme" $color_scheme_choices -}}
 
 {{/* find superuser command */}}
