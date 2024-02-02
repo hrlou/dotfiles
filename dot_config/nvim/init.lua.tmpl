@@ -1,3 +1,7 @@
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+vim.opt.termguicolors = true
+
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -23,8 +27,19 @@ require("lazy").setup({
 	{ 'alker0/chezmoi.vim', name = 'chezmoi' },
 	{ 'cespare/vim-toml', name = 'toml' },
 	-- EXTRA
-	{ 'nvim-telescope/telescope.nvim', name = 'telescope' },
-	{ 'kelly-lin/ranger.nvim', name = 'ranger' },
+	{ 'nvim-telescope/telescope.nvim',
+		name = 'telescope',
+		dependencies = {
+			{ 'nvim-lua/plenary.nvim' },
+		}
+	},
+	{ 'nvim-tree/nvim-tree.lua',
+		name = 'nvim-tree',
+		config = function()
+			require("nvim-tree").setup()
+		end,
+	}
+	
 })
 
 vim.o.background = {{ .style.color_mode | quote }} 
