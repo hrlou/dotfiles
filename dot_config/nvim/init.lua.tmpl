@@ -29,9 +29,9 @@ require("lazy").setup({
 	-- LANGUAGE SUPPORT 
 	{ 'vxpm/ferris.nvim',
 		name = 'ferris',
-		opts = {
-			create_commands = true,
-		},
+		config = function()
+			require("ferris").setup()
+		end,
 	},
 	-- EXTRA
 	{ 'voldikss/vim-floaterm', name = 'floaterm' },
