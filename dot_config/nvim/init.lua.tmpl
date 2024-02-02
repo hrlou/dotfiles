@@ -23,9 +23,11 @@ require("lazy").setup({
 	{ 'alker0/chezmoi.vim', name = 'chezmoi' },
 	{ 'cespare/vim-toml', name = 'toml' },
 	-- EXTRA
-	{  'nvim-telescope/telescope.nvim', name = 'telescope' },
+	{ 'nvim-telescope/telescope.nvim', name = 'telescope' },
+	{ 'kelly-lin/ranger.nvim', name = 'ranger' },
 })
 
 vim.o.background = {{ .style.color_mode | quote }} 
 vim.cmd([[colorscheme {{ .style.color_scheme }}]])
 vim.wo.relativenumber = true
+# vim: ft=lua
