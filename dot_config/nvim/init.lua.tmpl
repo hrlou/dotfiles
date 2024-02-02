@@ -13,12 +13,17 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappings are correct
 
 require("lazy").setup({
-	{ "alker0/chezmoi.vim" },
-	{ 'cespare/vim-toml' },
-	{ 'sainnhe/sonokai' },
-	{ "ellisonleao/gruvbox.nvim", priority = 1000 , config = true, opts = ...},
+	-- THEMES
+	{ 'sainnhe/sonokai', name = 'sonokai' },
+	{ 'ellisonleao/gruvbox.nvim', name = 'gruvbox' },
 	{ 'dracula/vim', name = 'dracula' },
-	{ 'nordtheme/vim', name  = 'nord' }
+	{ 'nordtheme/vim', name  = 'nord' },
+	{ 'folke/tokyonight.nvim', name = 'tokyonight' },
+	-- SYNTAX
+	{ 'alker0/chezmoi.vim', name = 'chezmoi' },
+	{ 'cespare/vim-toml', name = 'toml' },
+	-- EXTRA
+	{  'nvim-telescope/telescope.nvim', name = 'telescope' },
 })
 
 vim.o.background = {{ .style.color_mode | quote }} 
