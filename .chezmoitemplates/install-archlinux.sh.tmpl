@@ -10,7 +10,7 @@ fi
 {{ if eq .chezmoi.uid "0" }}
 log_warn "Cannot install packages as root!"
 {{ else }}
-yes | paru -S --needed \
+paru -S --needed \
        	python-pillow \
 	gtk-engine-murrine \
 	gnome-shell-extension-blur-my-shell \
