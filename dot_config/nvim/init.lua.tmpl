@@ -27,7 +27,13 @@ require("lazy").setup({
 	{ 'alker0/chezmoi.vim', name = 'chezmoi' },
 	{ 'cespare/vim-toml', name = 'toml' },
 	-- EXTRA
-	{ 'lukas-reineke/indent-blankline.nvim', name = 'indent-blankline' },
+	{ 'voldikss/vim-floaterm', name = 'floaterm' },
+	{ 'lukas-reineke/indent-blankline.nvim',
+		name = 'indent-blankline'
+		config = function()
+			require("ibl").setup()
+		end, 
+	},
 	{ 'nvim-telescope/telescope.nvim',
 		name = 'telescope',
 		dependencies = {
