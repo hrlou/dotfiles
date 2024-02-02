@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 alias bulkrename='massren'
+alias matrix='unimatrix'
 alias cls='clear'
 alias cz='chezmoi'
 alias fetch='neofetch'
