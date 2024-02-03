@@ -35,6 +35,12 @@ require("lazy").setup({
 	},
 	-- EXTRA
 	{ 'voldikss/vim-floaterm', name = 'floaterm' },
+	{ 'EtiamNullam/deferred-clipboard.nvim',
+		name = 'deferred-clipboard',
+		config = function()
+			require("deferred-clipboard").setup()
+		end,
+	}
 	{ 'lukas-reineke/indent-blankline.nvim',
 		name = 'indent-blankline',
 		config = function()
