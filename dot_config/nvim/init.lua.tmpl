@@ -35,6 +35,14 @@ require("lazy").setup({
 	},
 	-- EXTRA
 	{ 'voldikss/vim-floaterm', name = 'floaterm' },
+	{ 'iamcco/markdown-preview.nvim',
+		name = 'markdown-preview',
+    		cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    		ft = { "markdown" },
+    		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	},
 	{ 'EtiamNullam/deferred-clipboard.nvim',
 		name = 'deferred-clipboard',
 		config = function()
