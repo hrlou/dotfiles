@@ -2,6 +2,7 @@
 alias bulkrename='massren'
 alias matrix='unimatrix'
 alias icat='kitty +kitten icat'
+alias c='xsel -i -b'
 alias cls='clear'
 alias cz='chezmoi'
 alias fetch='neofetch'
