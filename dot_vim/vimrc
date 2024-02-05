@@ -1,0 +1,4 @@
+set bg=dark
+set relativenumber
+highlight clear LineNr
+highlight LineNr ctermfg=59 
