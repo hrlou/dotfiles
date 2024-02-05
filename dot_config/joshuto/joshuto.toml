@@ -1,0 +1,14 @@
+[display]
+mode = "default"
+collapse_preview = true
+column_ratio = [1, 3, 4]
+show_borders = true
+show_hidden = true
+show_icons = true
+tilde_in_titlebar = true
+
+[preview]
+max_preview_size = 12582912 # 12MiB
+preview_script = "~/.config/joshuto/preview.sh" 
+preview_shown_hook_script = "~/.config/joshuto/on_preview_shown.sh"
+preview_removed_hook_script = "~/.config/joshuto/on_preview_removed.sh"

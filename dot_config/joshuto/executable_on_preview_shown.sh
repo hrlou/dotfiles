@@ -38,3 +38,5 @@ case "$mimetype" in
 			--clear 2>/dev/null
 		;;
 esac
+
+exit 0
