@@ -11,7 +11,8 @@ case $(file -b --mime-type "${FILE_PATH}") in
 		bat \
                 	--color=always --paging=never \
                 	--style=plain \
-                	--terminal-width="${PREVIEW_WIDTH}"
+                	--terminal-width="${PREVIEW_WIDTH}" 
+			"${FILE_PATH}"
 		exit 0
 		;;
 	application/x-mach-binary | application/zip)
