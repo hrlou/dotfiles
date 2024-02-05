@@ -63,7 +63,6 @@ require("lazy").setup({
 	
 })
 
-vim.o.background = {{ .style.color_mode | quote }} 
-vim.cmd([[colorscheme {{ .style.color_scheme }}]])
+require "theme"
 vim.wo.relativenumber = true
 -- vim: ft=lua
