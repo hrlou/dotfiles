@@ -6,7 +6,10 @@ FILE_PATH="$1"
 case $(file -b --mime-type "${FILE_PATH}") in
 	text/* | application/json)
 		# bat "${FILE_PATH}"
-		bat --paging=never "${FILE_PATH}"
+		bat \
+			--paging=never \
+			--color=always \
+			"${FILE_PATH}"
 		exit 0
 		;;
 	application/x-mach-binary | application/zip)
