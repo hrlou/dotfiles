@@ -2,17 +2,11 @@
 
 shift
 FILE_PATH="$1"
-PREVIEW_WIDTH=10
-PREVIEW_HEIGHT=10
 
 case $(file -b --mime-type "${FILE_PATH}") in
 	text/* | application/json)
 		# bat "${FILE_PATH}"
-		bat \
-                	--color=always --paging=never \
-                	--style=plain \
-                	--terminal-width="${PREVIEW_WIDTH}" 
-			"${FILE_PATH}"
+		bat --paging=never "${FILE_PATH}"
 		exit 0
 		;;
 	application/x-mach-binary | application/zip)
