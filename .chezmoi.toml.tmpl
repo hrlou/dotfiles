@@ -63,7 +63,8 @@ os_color = {{
 
 [diff]
 command = "meld"
-args = ["--diff", "{{ .Destination }}", "{{ .Target }}"]
+args = ["--diff", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
+
 
 [git]
 autoCommit = true
