@@ -20,6 +20,7 @@ alias matrix='unimatrix'
 alias top='htop'
 alias txz='tar -cJvf'
 alias jf='joshuto'
+alias q='exit'
 
 # Editor
 alias nv='nvim'
