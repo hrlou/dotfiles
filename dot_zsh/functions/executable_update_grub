@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+sudo grub-mkconfig -o /boot/grub/grub.cfg
+# vim: ft=zsh
