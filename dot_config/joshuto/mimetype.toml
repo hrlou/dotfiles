@@ -1,6 +1,9 @@
 [class]
 text_default = [
-  { command = "nvim" },
+	{ command = "nvim" },
+]
+image_default = [
+	{ command = "loupe" },
 ]
 
 [extension]
