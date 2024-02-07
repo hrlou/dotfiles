@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+sudoedit /etc/default/grub
+update_grub
+# vim: ft=zsh

@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+sudoedit /etc/mkinitcpio.conf
+update_mkinitcpio
+# vim: ft=zsh
