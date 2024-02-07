@@ -23,7 +23,7 @@ require("lazy").setup({
 	{ 'ellisonleao/gruvbox.nvim', name = 'gruvbox' },
 	{ 'dracula/vim', name = 'dracula' },
 	{ 'nordtheme/vim', name  = 'nord' },
-	{ 'folke/tokyonight.nvim', name = 'tokyonight' },
+	{ 'navarasu/onedark.nvim', name = 'onedark' },
 	-- SYNTAX
 	{ 'alker0/chezmoi.vim', name = 'chezmoi' },
 	{ 'cespare/vim-toml', name = 'toml' },
