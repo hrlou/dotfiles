@@ -3,7 +3,7 @@ text_default = [
 	{ command = "nvim" },
 ]
 image_default = [
-	{ command = "loupe" },
+	{ command = "loupe", fork = true, silent = true },
 ]
 
 [extension]
@@ -54,5 +54,9 @@ yaml.inherit = "text_default"
 yml.inherit = "text_default"
 
 [mimetype]
+
 [mimetype.text]
 inherit = "text_default"
+
+[mimetype.image]
+inherit = "image_default"
