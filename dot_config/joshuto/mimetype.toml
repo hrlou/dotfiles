@@ -1,10 +1,9 @@
 [class]
 text_default = [
 	{ command = "nvim" },
+	{ command = "neovide", fork = true, silent = true },
 ]
-image_default = [
-	{ command = "loupe", fork = true, silent = true },
-]
+image_default = [ { command = "loupe", fork = true, silent = true } ]
 
 [extension]
 build.inherit = "text_default"
