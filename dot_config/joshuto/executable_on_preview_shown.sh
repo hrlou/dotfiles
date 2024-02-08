@@ -21,8 +21,13 @@ function image {
 }
 
 function video {
-    ffmpegthumbnailer -i "$1" -o "${TMP_FILE}" -s 0 2>/dev/null
-    image "${TMP_FILE}"
+	ffmpegthumbnailer -i "$1" -o "${TMP_FILE}" -s 0 2>/dev/null
+	image "${TMP_FILE}"
+}
+
+function document {
+	evince-thumbnailer "$1" -o "${TMP_FILE}">/dev/null
+	image "${TMP_FILE}"
 }
 
 case "$mimetype" in
@@ -31,6 +36,9 @@ case "$mimetype" in
 		;;
 	video/*)
 		video "${FILE_PATH}"
+		;;
+	application/pdf)
+		document "${FILE_PATH}"
 		;;
 	*)
 		kitty +kitten icat \
