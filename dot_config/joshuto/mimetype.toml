@@ -4,6 +4,8 @@ text_default = [
 	{ command = "neovide", fork = true, silent = true },
 ]
 image_default = [ { command = "loupe", fork = true, silent = true } ]
+video_default = [ { command = "vlc", fork = true, silent = true } ]
+reader_default = [ { command = "evince", fork = true, silent = true } ]
 
 [extension]
 build.inherit = "text_default"
