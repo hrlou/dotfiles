@@ -61,6 +61,11 @@ os_color = {{
      'blue'
 {{- end }}
 
+[diff]
+command = "meld"
+args = ["--diff", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
+
+
 [git]
 autoCommit = true
 autoPush = true

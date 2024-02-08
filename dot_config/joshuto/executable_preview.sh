@@ -1,15 +1,19 @@
 #!/usr/bin/env bash
 
 shift
-file="$1"
+FILE_PATH="$1"
 
-case $(file -b --mime-type "${file}") in
+case $(file -b --mime-type "${FILE_PATH}") in
 	text/* | application/json)
-		cat "${file}"
+		# bat "${FILE_PATH}"
+		bat \
+			--paging=never \
+			--color=always \
+			"${FILE_PATH}"
 		exit 0
 		;;
 	application/x-mach-binary | application/zip)
-		ls -lha "${file}"
+		ls -lha "${FILE_PATH}"
 		exit 0
 		;;
 	*)

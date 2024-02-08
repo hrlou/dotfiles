@@ -36,6 +36,17 @@ require("lazy").setup({
 	},
 	-- EXTRA
 	{ 'voldikss/vim-floaterm', name = 'floaterm' },
+	{ 'toppair/peek.nvim',
+		name = 'peek',
+    		event = { "VeryLazy" },
+    		build = "deno task --quiet build:fast",
+    		config = function()
+        		require("peek").setup()
+        		-- refer to `configuration to change defaults`
+        		vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+        		vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+    		end,
+	},
 	{ 'EtiamNullam/deferred-clipboard.nvim',
 		name = 'deferred-clipboard',
 		config = function()

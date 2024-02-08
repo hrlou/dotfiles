@@ -2,6 +2,7 @@
 alias bulkrename='massren'
 alias c='xsel -i -b'
 alias cls='clear'
+alias cm='chmod'
 alias cz='chezmoi'
 alias fetch='neofetch'
 alias fm='$FILE'
