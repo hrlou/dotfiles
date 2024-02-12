@@ -22,7 +22,7 @@ alias top='htop'
 alias txz='tar -cJvf'
 alias jf='joshuto'
 alias q='exit'
-
+alias vi='nvim'
 # Editor
 alias nv='nvim'
 alias e='$EDITOR'
