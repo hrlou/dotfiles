@@ -11,27 +11,28 @@ fi
 log_warn "Cannot install packages as root!"
 {{ else }}
 paru -S --needed \
-       	python-pillow \
-	gtk-engine-murrine \
-	gnome-shell-extension-blur-my-shell \
-	qgnomeplatform-qt5 \
-	qgnomeplatform-qt6 \
-	joshuto-bin \
-	ttf-liberation \
-	ttf-roboto \
-	massren \
 	adobe-source-han-sans-cn-fonts \
-	adobe-source-han-sans-tw-fonts \
 	adobe-source-han-sans-hk-fonts \
 	adobe-source-han-sans-jp-fonts \
 	adobe-source-han-sans-kr-fonts \
-	ttf-ancient-fonts \
-	meld \
+	adobe-source-han-sans-tw-fonts \
 	bat \
-	xsel \
 	deno \
-	unimatrix || \
-	true
+	diff-so-fancy \
+	gnome-shell-extension-blur-my-shell \
+	gtk-engine-murrine \
+	joshuto-bin \
+	massren \
+	meld \
+	qgnomeplatform-qt5 \
+	qgnomeplatform-qt6 \
+	ttf-ancient-fonts \
+	ttf-liberation \
+	ttf-roboto \
+	unimatrix \
+	xsel \
+       	python-pillow || \
+		true
 massren --config editor "nvim"
 {{ end }}
 # vim: ft=bash
