@@ -1,16 +1,12 @@
 #!/usr/bin/env bash
-if [ ! -f "${1}" ]; then
-	exit 1
-else
-	FILE_PATH="${1}"
-
 if command -v nvim-cat &> /dev/null; then
-	nvim-cat "${FILE_PATH}"
+	nvim-cat $*
 elif command -v bat &> /dev/null; then
 	bat \
+		--style=plain \
 		--paging=never \
 		--color=always \
-		"${FILE_PATH}"
+		$*
 else
-	# fall-back on cat
-	cat "${FILE_PATH}"
+	cat $*
+fi
