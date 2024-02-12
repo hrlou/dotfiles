@@ -8,7 +8,7 @@ elif command -v chezmoi >/dev/null; then
 else
         echo "Installing chezmoi"
         mkdir -p "$BINDIR"
-        sh -c "$(curl -fsLS get.chezmoi.io)" -- -b $BINDIR
+        sh -c "$(curl -fsLS get.chezmoi.io)" -- -b "${BINDIR}"
 	CZ="$BINDIR/chezmoi"
 fi
 read -p "Do you wish to use SSH? (y/N) " yn
