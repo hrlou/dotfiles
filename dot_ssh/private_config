@@ -2,3 +2,7 @@ Host git.hrlou.net
         Hostname git.hrlou.net
         User git
 	Port 2052
+
+Host aur.archlinux.org
+  IdentityFile ~/.ssh/id_ed25519
+  User aur

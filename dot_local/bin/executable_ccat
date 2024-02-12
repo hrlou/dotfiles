@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
-if command -v nvim-cat &> /dev/null; then
-	nvim-cat $*
-elif command -v bat &> /dev/null; then
+if command -v bat &> /dev/null; then
 	bat \
+		--theme=Dracula \
 		--style=plain \
 		--paging=never \
 		--color=always \
 		$*
+elif command -v nvim-cat &> /dev/null; then
+	nvim-cat $*
 else
 	cat $*
 fi
