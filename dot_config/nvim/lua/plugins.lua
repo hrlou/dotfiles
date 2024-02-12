@@ -23,18 +23,27 @@ require("lazy").setup({
 	-- SYNTAX
 	{ 'alker0/chezmoi.vim', name = 'chezmoi' },
 	{ 'cespare/vim-toml', name = 'toml' },
-	-- LANGUAGE SUPPORT
+	-- LANGUAGE SUPPORT - IDE STUFF
+	{ 'ms-jpq/coq_nvim', name = 'coq', branch = 'coq' },
+	{ 'nvim-treesitter/nvim-treesitter', name = 'treesitter' },
+	{ 'cdelledonne/vim-cmake', name = 'cmake' },
 	{ 'nvimdev/guard.nvim',
 		name = 'guard',
-		event = "BufReadPre",
+		-- event = "BufReadPre",
 		config = function()
 			local ft = require("guard.filetype")
 			ft("c,cpp,json"):fmt("clang-format")
+				:lint('clang-tidy')
+			ft('lua'):fmt('lsp')
+				:append('stylua')
 			require("guard").setup({
 				fmt_on_save = true,
 				lsp_as_default_formatter = false,
- 			})
+		})
 		end,
+		dependencies = {
+			{ 'nvimdev/guard-collection' },
+		}
 	},
 	{ 'neovim/nvim-lspconfig',
 		name = 'lspconfig',
@@ -52,14 +61,14 @@ require("lazy").setup({
 	{ 'voldikss/vim-floaterm', name = 'floaterm' },
 	{ 'toppair/peek.nvim',
 		name = 'peek',
-    		event = { "VeryLazy" },
-    		build = "deno task --quiet build:fast",
-    		config = function()
-        		require("peek").setup()
-        		-- refer to `configuration to change defaults`
-        		vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
-        		vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
-    		end,
+		event = { "VeryLazy" },
+		build = "deno task --quiet build:fast",
+		config = function()
+			require("peek").setup()
+			-- refer to `configuration to change defaults`
+			vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+			vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+		end,
 	},
 	{ 'EtiamNullam/deferred-clipboard.nvim',
 		name = 'deferred-clipboard',

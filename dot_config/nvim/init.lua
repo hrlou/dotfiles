@@ -1,8 +1,13 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
-vim.opt.termguicolors = true
-vim.opt.clipboard = unnamedplus
 vim.wo.relativenumber = true
+vim.opt.clipboard = unnamedplus
+vim.opt.termguicolors = true
+vim.opt.number = true
+vim.opt.signcolumn = "auto"
+vim.opt.wrap = false
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
 require('plugins')
 require('theme')
 -- vim: ft=lua
