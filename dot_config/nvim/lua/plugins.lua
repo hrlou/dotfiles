@@ -20,16 +20,24 @@ require("lazy").setup({
 	{ 'navarasu/onedark.nvim', name = 'onedark' },
 	{ 'nordtheme/vim', name  = 'nord' },
 	{ 'sainnhe/sonokai', name = 'sonokai' },
+	{ 'catppuccin/nvim', name = 'catppuccin' },
 	-- SYNTAX
 	{ 'alker0/chezmoi.vim', name = 'chezmoi' },
 	{ 'cespare/vim-toml', name = 'toml' },
 	-- LANGUAGE SUPPORT - IDE STUFF
+	{ 'williamboman/mason.nvim', name = 'mason' },
+	{ 'neovim/nvim-lspconfig', name = 'lspconfig' },
 	{ 'cdelledonne/vim-cmake', name = 'cmake' }, -- cmake exposure
-	{ 'mrcjkb/rustaceanvim', name = 'rustaceanvim' }, -- rust lsp
-	{ 'ms-jpq/coq_nvim', name = 'coq', branch = 'coq' }, -- autocompletion
-	{ 'neovim/nvim-lspconfig', name = 'lspconfig', },
 	{ 'nvim-treesitter/nvim-treesitter', name = 'treesitter' }, -- language parser
-	{ 'nvimdev/guard.nvim',
+	{ 'ms-jpq/coq_nvim',
+		name = 'coq',
+		branch = 'coq',
+		dependencies = {
+			{ 'ms-jpq/coq.artifacts', branch = 'artifacts' },
+			{ 'ms-jpq/coq.thirdparty', branch = '3p'}
+		}
+	}, -- autocompletion
+	{ 'nvimdev/guard.nvim', -- MIGHT DELETE
 		-- provides code auto formatting
 		name = 'guard',
 		dependencies = {
@@ -38,8 +46,12 @@ require("lazy").setup({
 	},
 	{ 'saecki/crates.nvim',
 		-- crates intergration
-    	name = 'crates',
+		name = 'crates',
 		tag = 'stable',
+	},
+	{ 'mrcjkb/rustaceanvim',
+  		version = '^4', -- Recommended
+		ft = { 'rust' },
 	},
 	-- EXTRA
 	{ 'EtiamNullam/deferred-clipboard.nvim', name = 'deferred-clipboard' }, -- use system clipboard
