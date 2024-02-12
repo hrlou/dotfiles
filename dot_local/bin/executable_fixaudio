@@ -1,4 +1,4 @@
-#!/usr/bin/env zsh
+#!/usr/bin/env bash
 systemctl enable --user pipewire{,-pulse}
 systemctl restart --user pipewire{,-pulse}
-# vim: ft=zsh
+# vim: ft=bash
