@@ -1,0 +1,18 @@
+{{  template "header.sh.tmpl" . }}
+# vim: ft=bash
+massren --config editor "nvim"
+if cmd_check python3; then
+	PYTHON_3="{{ lookPath "python3" }}"
+	PYTHON="$(dirname "$PYTHON_3")/python"
+	if ! cmd_check python; then
+		log_info "Setting python default to: '${PYTHON_3}'"
+		{{ .os.super }} update-alternatives --install $PYTHON python $PYTHON_3 1
+	fi
+fi
+
+# TODO
+# Install Fonts
+# Install Icons / Themes
+log_info "Please set shell to zsh if not so!"
+
+exit 0

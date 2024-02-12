@@ -1,0 +1,56 @@
+{{  template "header.sh.tmpl" . -}}
+# vim: ft=bash
+log_info "Installing pre-requisites"
+if cmd_check pacman; then
+	if ! cmd_check paru; then
+		log_info "'paru' not found, installing!"
+		mkdir -p ~/.local/cache/paru
+		git clone https://aur.archlinux.org/paru.git ~/.local/cache/paru
+		cd ~/.local/cache/paru
+		makepkg -si
+		cd -
+		rm -rf ~/.local/cache/paru
+	else
+		log_debug "'paru' found!"
+	fi
+fi
+
+{{ if eq .chezmoi.uid "0" }}
+log_warn "Cannot install packages as root!"
+{{ else }}
+paru -S --needed \
+{{- if .use_gui -}}
+	adobe-source-han-sans-cn-fonts \
+	adobe-source-han-sans-hk-fonts \
+	adobe-source-han-sans-jp-fonts \
+	adobe-source-han-sans-kr-fonts \
+	adobe-source-han-sans-tw-fonts \
+	gnome-shell-extension-blur-my-shell \
+	gtk-engine-murrine \
+	qgnomeplatform-qt5 \
+	qgnomeplatform-qt6 \
+	ttf-ancient-fonts \
+	ttf-liberation \
+	ttf-roboto \
+	xsel \
+	python-pillow \
+{{- end }}
+	bat \
+	cmake \
+	curl \
+	deno \
+	diff-so-fancy \
+	git \
+	go \
+	htop \
+	joshuto-bin \
+	jq \
+	massren \
+	neovim \
+	starship \
+	unimatrix \
+	wget \
+	zsh || true
+{{ end }}
+
+exit 0

@@ -1,4 +1,3 @@
-#!/bin/sh
 export COLOR_INFO="\e[32m"
 export COLOR_WARN="\e[33m"
 export COLOR_ERROR="\e[31m"
@@ -33,5 +32,9 @@ log_debug() {
 
 cmd_check() {
 	cmd="$1"
-	return "$(command -v "${cmd}" >/dev/null)"
+	if command -v "${cmd}" >/dev/null; then
+		return 0
+	else
+		return 1
+	fi
 }
