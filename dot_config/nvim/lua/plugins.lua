@@ -44,7 +44,7 @@ require("lazy").setup({
 	-- EXTRA
 	{ 'EtiamNullam/deferred-clipboard.nvim', name = 'deferred-clipboard' }, -- use system clipboard
 	{ 'lukas-reineke/indent-blankline.nvim', name = 'indent-blankline' }, -- tab lines
-	{ 'nvim-tree/nvim-tree.lua', name = 'nvim-tree' } -- better file explorer, I'd prefer joshuto integration 
+	{ 'nvim-tree/nvim-tree.lua', name = 'nvim-tree' }, -- better file explorer, I'd prefer joshuto integration 
 	{ 'voldikss/vim-floaterm', name = 'floaterm' }, -- floating shell
 	{ 'toppair/peek.nvim',
 		-- markdown preview
