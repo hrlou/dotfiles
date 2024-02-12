@@ -15,74 +15,48 @@ vim.g.mapleader = " " -- Make sure to set `mapleader` before lazy so your mappin
 
 require("lazy").setup({
 	-- THEMES
-	{ 'sainnhe/sonokai', name = 'sonokai' },
-	{ 'ellisonleao/gruvbox.nvim', name = 'gruvbox' },
 	{ 'dracula/vim', name = 'dracula' },
-	{ 'nordtheme/vim', name  = 'nord' },
+	{ 'ellisonleao/gruvbox.nvim', name = 'gruvbox' },
 	{ 'navarasu/onedark.nvim', name = 'onedark' },
+	{ 'nordtheme/vim', name  = 'nord' },
+	{ 'sainnhe/sonokai', name = 'sonokai' },
 	-- SYNTAX
 	{ 'alker0/chezmoi.vim', name = 'chezmoi' },
 	{ 'cespare/vim-toml', name = 'toml' },
 	-- LANGUAGE SUPPORT - IDE STUFF
-	{ 'ms-jpq/coq_nvim', name = 'coq', branch = 'coq' },
-	{ 'nvim-treesitter/nvim-treesitter', name = 'treesitter' },
-	{ 'cdelledonne/vim-cmake', name = 'cmake' },
+	{ 'cdelledonne/vim-cmake', name = 'cmake' }, -- cmake exposure
+	{ 'mrcjkb/rustaceanvim', name = 'rustaceanvim' }, -- rust lsp
+	{ 'ms-jpq/coq_nvim', name = 'coq', branch = 'coq' }, -- autocompletion
+	{ 'neovim/nvim-lspconfig', name = 'lspconfig', },
+	{ 'nvim-treesitter/nvim-treesitter', name = 'treesitter' }, -- language parser
 	{ 'nvimdev/guard.nvim',
+		-- provides code auto formatting
 		name = 'guard',
-		-- event = "BufReadPre",
 		dependencies = {
 			{ 'nvimdev/guard-collection' },
 		}
 	},
-	{ 'neovim/nvim-lspconfig',
-		name = 'lspconfig',
-		config = function()
-			require('lspconfig')
-		end,
-	},
-	{ 'vxpm/ferris.nvim',
-		name = 'ferris',
-		config = function()
-			require("ferris").setup()
-		end,
-	},
 	{ 'saecki/crates.nvim',
+		-- crates intergration
     	name = 'crates',
 		tag = 'stable',
-    	config = function()
-        	require('crates').setup()
-    	end,
 	},
 	-- EXTRA
-	{ 'voldikss/vim-floaterm', name = 'floaterm' },
+	{ 'EtiamNullam/deferred-clipboard.nvim', name = 'deferred-clipboard' }, -- use system clipboard
+	{ 'lukas-reineke/indent-blankline.nvim', name = 'indent-blankline' }, -- tab lines
+	{ 'nvim-tree/nvim-tree.lua', name = 'nvim-tree' } -- better file explorer, I'd prefer joshuto integration 
+	{ 'voldikss/vim-floaterm', name = 'floaterm' }, -- floating shell
 	{ 'toppair/peek.nvim',
+		-- markdown preview
 		name = 'peek',
 		event = { "VeryLazy" },
 		build = "deno task --quiet build:fast",
 	},
-	{ 'EtiamNullam/deferred-clipboard.nvim',
-		name = 'deferred-clipboard',
-		config = function()
-			require("deferred-clipboard").setup()
-		end,
-	},
-	{ 'lukas-reineke/indent-blankline.nvim',
-		name = 'indent-blankline',
-		config = function()
-			require("ibl").setup()
-		end, 
-	},
 	{ 'nvim-telescope/telescope.nvim',
+		-- vim fuzzy finder
 		name = 'telescope',
 		dependencies = {
 			{ 'nvim-lua/plenary.nvim' },
 		}
 	},
-	{ 'nvim-tree/nvim-tree.lua',
-		name = 'nvim-tree',
-		config = function()
-			require("nvim-tree").setup()
-		end,
-	}
 })
--- vim: ft=lua
