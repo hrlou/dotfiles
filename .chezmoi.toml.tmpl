@@ -61,11 +61,16 @@ os_color = {{
      'blue'
 {{- end }}
 
-[diff]
-command = "meld"
-args = ["--diff", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
+[merge]
+command = "nvim"
+args = ["-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
 
+[diff]
+command = "nvim"
+pager = "diff-so-fancy"
+args = ["-d", "{{ "{{" }} .Destination {{ "}}" }}", "{{ "{{" }} .Source {{ "}}" }}", "{{ "{{" }} .Target {{ "}}" }}"]
 
 [git]
 autoCommit = true
 autoPush = true
+# vim: ft=toml

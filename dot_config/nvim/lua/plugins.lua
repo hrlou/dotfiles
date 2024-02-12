@@ -30,17 +30,6 @@ require("lazy").setup({
 	{ 'nvimdev/guard.nvim',
 		name = 'guard',
 		-- event = "BufReadPre",
-		config = function()
-			local ft = require("guard.filetype")
-			ft("c,cpp,json"):fmt("clang-format")
-				:lint('clang-tidy')
-			ft('lua'):fmt('lsp')
-				:append('stylua')
-			require("guard").setup({
-				fmt_on_save = true,
-				lsp_as_default_formatter = false,
-		})
-		end,
 		dependencies = {
 			{ 'nvimdev/guard-collection' },
 		}
@@ -57,18 +46,19 @@ require("lazy").setup({
 			require("ferris").setup()
 		end,
 	},
+	{ 'saecki/crates.nvim',
+    	name = 'crates',
+		tag = 'stable',
+    	config = function()
+        	require('crates').setup()
+    	end,
+	},
 	-- EXTRA
 	{ 'voldikss/vim-floaterm', name = 'floaterm' },
 	{ 'toppair/peek.nvim',
 		name = 'peek',
 		event = { "VeryLazy" },
 		build = "deno task --quiet build:fast",
-		config = function()
-			require("peek").setup()
-			-- refer to `configuration to change defaults`
-			vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
-			vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
-		end,
 	},
 	{ 'EtiamNullam/deferred-clipboard.nvim',
 		name = 'deferred-clipboard',
