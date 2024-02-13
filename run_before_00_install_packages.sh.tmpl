@@ -3,13 +3,14 @@
 log_info "Installing pre-requisites"
 if cmd_check pacman; then
 	if ! cmd_check paru; then
+		CLONE="${HOME}/.local/clone"
 		log_info "'paru' not found, installing!"
-		mkdir -p ~/.local/cache/paru
-		git clone https://aur.archlinux.org/paru.git ~/.local/cache/paru
-		cd ~/.local/cache/paru
+		mkdir -p ${CLONE}
+		git clone 'https://aur.archlinux.org/paru.git' "${CLONE}/paru"
+		cd "${CLONE}/paru"
 		makepkg -si
 		cd -
-		rm -rf ~/.local/cache/paru
+		rm -rf "${CLONE}/paru"
 	else
 		log_debug "'paru' found!"
 	fi
