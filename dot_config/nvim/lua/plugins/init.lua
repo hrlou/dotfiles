@@ -29,14 +29,23 @@ require("lazy").setup({
 	{ 'neovim/nvim-lspconfig', name = 'lspconfig' },
 	{ 'cdelledonne/vim-cmake', name = 'cmake' }, -- cmake exposure
 	{ 'nvim-treesitter/nvim-treesitter', name = 'treesitter' }, -- language parser
-	{ 'ms-jpq/coq_nvim',
-		name = 'coq',
-		branch = 'coq',
+	-- { 'ms-jpq/coq_nvim',
+	-- 	name = 'coq',
+	-- 	branch = 'coq',
+	-- 	dependencies = {
+	-- 		{ 'ms-jpq/coq.artifacts', branch = 'artifacts' },
+	-- 		{ 'ms-jpq/coq.thirdparty', branch = '3p'}
+	-- 	}
+	-- }, -- autocompletion
+	{ 'hrsh7th/nvim-cmp',
+		name = 'cmp',
 		dependencies = {
-			{ 'ms-jpq/coq.artifacts', branch = 'artifacts' },
-			{ 'ms-jpq/coq.thirdparty', branch = '3p'}
+			{ 'hrsh7th/cmp-nvim-lsp' },
+			{ 'hrsh7th/cmp-buffer' },
+			{ 'hrsh7th/cmp-path' },
+			{ 'hrsh7th/cmp-cmdline' },
 		}
-	}, -- autocompletion
+	},
 	{ 'nvimdev/guard.nvim', -- MIGHT DELETE
 		-- provides code auto formatting
 		name = 'guard',
@@ -48,15 +57,35 @@ require("lazy").setup({
 		-- crates intergration
 		name = 'crates',
 		tag = 'stable',
+		opts = {},
 	},
 	{ 'mrcjkb/rustaceanvim',
-  		version = '^4', -- Recommended
+		version = '^4', -- Recommended
 		ft = { 'rust' },
 	},
 	-- EXTRA
-	{ 'EtiamNullam/deferred-clipboard.nvim', name = 'deferred-clipboard' }, -- use system clipboard
-	{ 'lukas-reineke/indent-blankline.nvim', name = 'indent-blankline' }, -- tab lines
-	{ 'nvim-tree/nvim-tree.lua', name = 'nvim-tree' }, -- better file explorer, I'd prefer joshuto integration 
+	{ 'folke/which-key.nvim',
+		name = 'which-key',
+		event = "VeryLazy",
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+  		end,
+	},
+	{ 'windwp/nvim-autopairs',
+		event = "InsertEnter",
+    	opts = {}
+	},
+	{ 'nvim-lualine/lualine.nvim', name = 'lualine', opts = {} },
+	{ 'EtiamNullam/deferred-clipboard.nvim', name = 'deferred-clipboard', opts = {} }, -- use system clipboard
+	{ 'lukas-reineke/indent-blankline.nvim', name = 'ibl', main = "ibl", opts = {} }, -- tab lines
+	{ 'nvim-tree/nvim-tree.lua',
+		-- better file explorer
+		name = 'nvim-tree',
+		opts = function()
+			return require 'plugins.config.nvim-tree'
+    	end,
+	},
 	{ 'voldikss/vim-floaterm', name = 'floaterm' }, -- floating shell
 	{ 'toppair/peek.nvim',
 		-- markdown preview

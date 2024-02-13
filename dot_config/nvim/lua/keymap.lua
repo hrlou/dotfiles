@@ -2,6 +2,7 @@ local keymap = vim.api.nvim_set_keymap
 local opts = {
 	noremap = true,
 }
+keymap('', '<leader>ms', ':Mason', {})
 
 -- CMake
 keymap('', '<leader>cg', ':CMakeGenerate<cr>', {})
