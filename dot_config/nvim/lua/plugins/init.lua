@@ -25,18 +25,15 @@ require("lazy").setup({
 	{ 'alker0/chezmoi.vim', name = 'chezmoi' },
 	{ 'cespare/vim-toml', name = 'toml' },
 	-- LANGUAGE SUPPORT - IDE STUFF
-	{ 'williamboman/mason.nvim', name = 'mason' },
 	{ 'neovim/nvim-lspconfig', name = 'lspconfig' },
 	{ 'cdelledonne/vim-cmake', name = 'cmake' }, -- cmake exposure
 	{ 'nvim-treesitter/nvim-treesitter', name = 'treesitter' }, -- language parser
-	-- { 'ms-jpq/coq_nvim',
-	-- 	name = 'coq',
-	-- 	branch = 'coq',
-	-- 	dependencies = {
-	-- 		{ 'ms-jpq/coq.artifacts', branch = 'artifacts' },
-	-- 		{ 'ms-jpq/coq.thirdparty', branch = '3p'}
-	-- 	}
-	-- }, -- autocompletion
+	{ 'williamboman/mason.nvim',
+		name = 'mason',
+		dependencies = {
+			 { 'williamboman/mason-lspconfig.nvim' },
+		}
+	},
 	{ 'hrsh7th/nvim-cmp',
 		name = 'cmp',
 		dependencies = {
@@ -44,7 +41,10 @@ require("lazy").setup({
 			{ 'hrsh7th/cmp-buffer' },
 			{ 'hrsh7th/cmp-path' },
 			{ 'hrsh7th/cmp-cmdline' },
-		}
+		},
+		init = function()
+			require('plugins.config.cmp')
+		end,
 	},
 	{ 'nvimdev/guard.nvim', -- MIGHT DELETE
 		-- provides code auto formatting
