@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-local THEME_DIR="${1}"
+THEME_DIR="${1}"
 if [ ! -d "${THEME_DIR}/gtk-4.0" ]; then
 	echo "Theme does not exist!"
       	exit 1
@@ -13,7 +13,7 @@ ln -sf "${THEME_DIR}/gtk-4.0/gtk-dark.css" "${HOME}/.config/gtk-4.0/gtk-dark.css
 
 echo "Link '$THEME_DIR/gtk-3.0' to '${HOME}/.config/gtk-3.0' for libadwaita..."
 mkdir -p "${HOME}/.config/gtk-3.0"
-[ -l "${HOME}/gtk-3.0/assets" ] && rm "${HOME}/gtk-3.0/assets" 
+[ -L "${HOME}/gtk-3.0/assets" ] && rm "${HOME}/gtk-3.0/assets" 
 ln -sf "${THEME_DIR}/gtk-3.0/assets" "${HOME}/.config/gtk-3.0/assets"
 ln -sf "${THEME_DIR}/gtk-3.0/gtk.css" "${HOME}/.config/gtk-3.0/gtk.css"
 ln -sf "${THEME_DIR}/gtk-3.0/gtk-dark.css" "${HOME}/.config/gtk-3.0/gtk-dark.css"
