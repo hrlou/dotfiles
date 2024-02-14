@@ -22,7 +22,7 @@ log_warn() {
 	_log "WARN" "$*"
 }
 
-log_err() {
+log_error() {
 	_log "ERROR" "$*"
 }
 
