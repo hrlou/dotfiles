@@ -2,7 +2,7 @@
 working_tree="$(chezmoi data | jq .chezmoi.workingTree)"; working_tree="${working_tree:1:-1}"	
 source "${working_tree}/.assets/include.sh"
 
-# THEMES="/usr/share/themes"
+THEMES="/usr/share/themes"
 ICONS="/usr/share/icons"
 CACHE="${HOME}/.local/cache/hrlou"
 COLLOID="Colloid-icon-theme"
@@ -12,6 +12,7 @@ install_colloid() {
 	mkdir -p "${CACHE}"
 	git clone "https://github.com/hrlou/Colloid-icon-theme" "${CACHE}/${COLLOID}"
 	sudo "${CACHE}/${COLLOID}/install.sh"
+	gsettings set org.gnome.desktop.interface icon-theme 'Colloid'
 }
 
 # MAIN
@@ -31,4 +32,13 @@ else
 	install_colloid
 fi
 log_info "Done!"
-data .
+
+if yes_or_no "Install and Setup 'catppuccin'"; then
+	paru -S --needed catppuccin-gtk-theme-mocha
+	theme='Catppuccin-Mocha-Standard-Lavender-Dark'
+	gsettings set org.gnome.desktop.interface gtk-theme "${theme}"
+	gsettings set org.gnome.shell.extensions.user-theme name "${theme}"
+	linkadwaita "${THEMES}/${theme}"
+fi
+
+# data .
