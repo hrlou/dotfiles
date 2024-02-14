@@ -10,6 +10,7 @@ return {
 		require("mason").setup()
 		require("mason-lspconfig").setup()
 		require("lspconfig").rust_analyzer.setup {}
-		require("lspconfig").bls.setup {}
+		require("lspconfig").lua_ls.setup {}
+		require("lspconfig").bash_language_server.setup {}
 	end,
 }
