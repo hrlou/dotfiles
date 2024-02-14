@@ -38,3 +38,15 @@ cmd_check() {
 		return 1
 	fi
 }
+
+yes_or_no() {
+	read -rp "${1} (y/N) " yn
+	case $yn in
+		y | yes ) return 0;;
+		* ) return 1;;
+	esac
+}
+
+data() {
+	chezmoi data | jq "${1}"
+}
