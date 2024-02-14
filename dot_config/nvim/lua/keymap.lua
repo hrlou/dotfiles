@@ -2,20 +2,20 @@ local keymap = vim.api.nvim_set_keymap
 local opts = {
 	noremap = true,
 }
-keymap('', '<leader>ms', ':Mason', {})
 
 -- Split
-keymap('', '<leader>sv', ':vsplit<cr>', {})
-keymap('', '<leader>ss', ':split<cr>', {})
+keymap('', '<leader>sv', ':vsplit<cr>', { desc = "Split Vertically" })
+keymap('', '<leader>ss', ':split<cr>', { desc = "Split Horizontally" })
 
 -- CMake
-keymap('', '<leader>cg', ':CMakeGenerate<cr>', {})
-keymap('', '<leader>cb', ':CMakeBuild<cr>', {})
-keymap('', '<leader>cq', ':CMakeClose<cr>', {})
-keymap('', '<leader>cc', ':CMakeClean<cr>', {})
+keymap('c', '<leader>cg', ':CMakeGenerate<cr>', {})
+keymap('c', '<leader>cb', ':CMakeBuild<cr>', {})
+keymap('c', '<leader>cq', ':CMakeClose<cr>', {})
+keymap('c', '<leader>cc', ':CMakeClean<cr>', {})
 
 -- Telescope
-keymap('n', '<leader>ff', "<cmd>lua require('telescope.builtin').find_files()<cr>", opts)
-keymap('n', '<leader>fg', "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
-keymap('n', '<leader>fb', "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
-keymap('n', '<leader>fh', "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
+-- keymap('', '', { desc = "Telescope" })
+keymap('', '<leader>tf', "<cmd>lua require('telescope.builtin').find_files()<cr>", { desc = "Fuzzy-Find Files" })
+keymap('', '<leader>tg', "<cmd>lua require('telescope.builtin').live_grep()<cr>", { desc = "Live Grep" })
+keymap('', '<leader>tb', "<cmd>lua require('telescope.builtin').buffers()<cr>", { desc = "Buffers" })
+keymap('', '<leader>th', "<cmd>lua require('telescope.builtin').help_tags()<cr>", { desc = "Help" })
