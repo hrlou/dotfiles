@@ -4,6 +4,10 @@ local opts = {
 }
 keymap('', '<leader>ms', ':Mason', {})
 
+-- Split
+keymap('', '<leader>sv', ':vsplit<cr>', {})
+keymap('', '<leader>ss', ':split<cr>', {})
+
 -- CMake
 keymap('', '<leader>cg', ':CMakeGenerate<cr>', {})
 keymap('', '<leader>cb', ':CMakeBuild<cr>', {})
