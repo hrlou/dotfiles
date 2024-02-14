@@ -8,9 +8,18 @@ return {
 	},
 	init = function()
 		require("mason").setup()
-		require("mason-lspconfig").setup()
-		require("lspconfig").rust_analyzer.setup {}
-		require("lspconfig").lua_ls.setup {}
+		require("mason-lspconfig").setup {
+			ensure_installed = {
+				"bashls",
+				"clangd",
+				"lua_ls",
+				"rust_analyzer",
+			},
+		}
+	
 		require("lspconfig").bashls.setup {}
+		require("lspconfig").clangd.setup {}
+		require("lspconfig").lua_ls.setup {}
+		require("lspconfig").rust_analyzer.setup {}
 	end,
 }
