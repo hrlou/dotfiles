@@ -1,7 +1,8 @@
 #!/usr/bin/env zsh
 # exit if "$1" is not a directory
-[ -d "$1" ] || return 1
-cd "$1" 
-fzf
+[ -d "${1}" ] || return 1
+cd "${1}" 
+result="$(fzf)"
+echo "${1}/${result}"
 cd -
 # vim: ft=zsh
