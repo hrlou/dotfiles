@@ -1,9 +1,11 @@
-local ft = require("guard.filetype")
-ft("c,cpp,json")
-	:fmt("clang-format")
-	:lint('clang-tidy')
-
-require("guard").setup({
-	fmt_on_save = true,
-	lsp_as_default_formatter = false,
-})
+return {
+	'nvimdev/guard.nvim',
+	name = 'guard',
+	event = "VeryLazy",
+	dependencies = {
+		{ 'nvimdev/guard-collection' },
+	},
+--	init = function()
+--		require('plugins.config.guard')
+--	end,	
+}

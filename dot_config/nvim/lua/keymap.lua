@@ -8,14 +8,20 @@ keymap('', '<leader>sv', ':vsplit<cr>', { desc = "Split Vertically" })
 keymap('', '<leader>ss', ':split<cr>', { desc = "Split Horizontally" })
 
 -- CMake
-keymap('c', '<leader>cg', ':CMakeGenerate<cr>', {})
-keymap('c', '<leader>cb', ':CMakeBuild<cr>', {})
-keymap('c', '<leader>cq', ':CMakeClose<cr>', {})
-keymap('c', '<leader>cc', ':CMakeClean<cr>', {})
+keymap('', '<leader>cg', ':CMakeGenerate<cr>', {})
+keymap('', '<leader>cb', ':CMakeBuild<cr>', {})
+keymap('', '<leader>cq', ':CMakeClose<cr>', {})
+keymap('', '<leader>cc', ':CMakeClean<cr>', {})
 
 -- Telescope
 -- keymap('', '', { desc = "Telescope" })
-keymap('f', '<leader>tf', "<cmd>lua require('telescope.builtin').find_files()<cr>", { desc = "Fuzzy-Find Files" })
-keymap('f', '<leader>tg', "<cmd>lua require('telescope.builtin').live_grep()<cr>", { desc = "Live Grep" })
-keymap('f', '<leader>tb', "<cmd>lua require('telescope.builtin').buffers()<cr>", { desc = "Buffers" })
-keymap('f', '<leader>th', "<cmd>lua require('telescope.builtin').help_tags()<cr>", { desc = "Help" })
+keymap('', '<leader>t', "", { desc = "Telescope" })
+keymap('', '<leader>tf', "<cmd>lua require('telescope.builtin').find_files()<cr>", { desc = "Fuzzy-Find Files" })
+keymap('', '<leader>tg', "<cmd>lua require('telescope.builtin').live_grep()<cr>", { desc = "Live Grep" })
+keymap('', '<leader>tb', "<cmd>lua require('telescope.builtin').buffers()<cr>", { desc = "Buffers" })
+keymap('', '<leader>th', "<cmd>lua require('telescope.builtin').help_tags()<cr>", { desc = "Help" })
+
+-- Open
+keymap('', '<leader>bh', ":e ~/<cr>", { desc = "Browse Home" })
+keymap('', '<leader>bn', ":e ~/.config/nvim<cr>", { desc = "Browse NVIM Config" })
+keymap('', '<leader>bg', ":e ~/git<cr>", { desc = "Browse Git" })
