@@ -13,7 +13,7 @@ require('lazy').setup({
 	{ 'cespare/vim-toml', name = 'toml' },
 	-- OTHER
 	{ 'cdelledonne/vim-cmake', name = 'cmake' }, -- cmake exposure
-	{ 'nvim_treesitter/nvim_treesitter', name = 'treesitter' }, -- language parser
+	{ 'nvim-treesitter/nvim-treesitter', name = 'treesitter' }, -- language parser
 	{ 'lukas-reineke/indent-blankline.nvim', name = 'ibl', main = "ibl", opts = {} }, -- tab lines
 	{ 'windwp/nvim-autopairs', event = "InsertEnter", opts = {} },
 	{ 'EtiamNullam/deferred-clipboard.nvim', name = 'deferred-clipboard', opts = {} }, -- use system clipboard
