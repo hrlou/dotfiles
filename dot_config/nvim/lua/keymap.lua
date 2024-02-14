@@ -15,7 +15,7 @@ keymap('c', '<leader>cc', ':CMakeClean<cr>', {})
 
 -- Telescope
 -- keymap('', '', { desc = "Telescope" })
-keymap('', '<leader>tf', "<cmd>lua require('telescope.builtin').find_files()<cr>", { desc = "Fuzzy-Find Files" })
-keymap('', '<leader>tg', "<cmd>lua require('telescope.builtin').live_grep()<cr>", { desc = "Live Grep" })
-keymap('', '<leader>tb', "<cmd>lua require('telescope.builtin').buffers()<cr>", { desc = "Buffers" })
-keymap('', '<leader>th', "<cmd>lua require('telescope.builtin').help_tags()<cr>", { desc = "Help" })
+keymap('f', '<leader>tf', "<cmd>lua require('telescope.builtin').find_files()<cr>", { desc = "Fuzzy-Find Files" })
+keymap('f', '<leader>tg', "<cmd>lua require('telescope.builtin').live_grep()<cr>", { desc = "Live Grep" })
+keymap('f', '<leader>tb', "<cmd>lua require('telescope.builtin').buffers()<cr>", { desc = "Buffers" })
+keymap('f', '<leader>th', "<cmd>lua require('telescope.builtin').help_tags()<cr>", { desc = "Help" })
