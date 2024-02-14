@@ -13,6 +13,16 @@ install_colloid() {
 	git clone "https://github.com/hrlou/Colloid-icon-theme" "${CACHE}/${COLLOID}"
 	sudo "${CACHE}/${COLLOID}/install.sh"
 	gsettings set org.gnome.desktop.interface icon-theme 'Colloid'
+	log_info "Colloid configured!"
+}
+
+install_catppuccin() {
+	paru -S --needed catppuccin-gtk-theme-mocha
+	theme='Catppuccin-Mocha-Standard-Lavender-Dark'
+	gsettings set org.gnome.desktop.interface gtk-theme "${theme}"
+	gsettings set org.gnome.shell.extensions.user-theme name "${theme}"
+	linkadwaita "${THEMES}/${theme}"
+	log_info "Catppuccin configured! Please relog"
 }
 
 # MAIN
@@ -31,14 +41,9 @@ else
 	log_info "Colloid not found"
 	install_colloid
 fi
-log_info "Done!"
 
-if yes_or_no "Install and Setup 'catppuccin'"; then
-	paru -S --needed catppuccin-gtk-theme-mocha
-	theme='Catppuccin-Mocha-Standard-Lavender-Dark'
-	gsettings set org.gnome.desktop.interface gtk-theme "${theme}"
-	gsettings set org.gnome.shell.extensions.user-theme name "${theme}"
-	linkadwaita "${THEMES}/${theme}"
+if yes_or_no "Install and setup Catppuccin theme?"; then
+	install_catppuccin
 fi
 
-# data .
+log_info "Done!"
