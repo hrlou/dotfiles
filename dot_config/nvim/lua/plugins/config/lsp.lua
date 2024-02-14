@@ -9,5 +9,7 @@ return {
 	init = function()
 		require("mason").setup()
 		require("mason-lspconfig").setup()
+		require("lspconfig").rust_analyzer.setup {}
+		require("lspconfig").bls.setup {}
 	end,
 }
