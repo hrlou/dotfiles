@@ -18,6 +18,9 @@ require('lazy').setup({
 	{ 'windwp/nvim-autopairs', event = "InsertEnter", opts = {} },
 	{ 'EtiamNullam/deferred-clipboard.nvim', name = 'deferred-clipboard', opts = {} }, -- use system clipboard
 	{ 'norcalli/nvim-colorizer.lua', name = 'colorizer', opts = {} },
+	require('plugins.config.dap'),
+	require('plugins.config.clear_action'),
+	require('plugins.config.comment'),
 	require('plugins.config.alpha'),
 	require('plugins.config.barbar'),
 	require('plugins.config.cmp'),

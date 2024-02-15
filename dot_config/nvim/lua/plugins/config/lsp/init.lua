@@ -5,8 +5,10 @@ return {
 	dependencies = {
 		{ 'neovim/nvim-lspconfig' },
 		{ 'williamboman/mason-lspconfig.nvim' },
+		{ 'nvimdev/lspsaga.nvim',
 	},
 	init = function()
+        require('lspsaga').setup()
 		require("mason").setup()
 		require("mason-lspconfig").setup {
 			ensure_installed = {

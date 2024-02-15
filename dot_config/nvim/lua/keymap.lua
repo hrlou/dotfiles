@@ -3,9 +3,9 @@ local opts = {
 	noremap = true,
 }
 
--- Split
-keymap('', '<leader>sv', ':vsplit<cr>', { desc = "Split Vertically" })
-keymap('', '<leader>ss', ':split<cr>', { desc = "Split Horizontally" })
+keymap('n', '<C-s>', ':vsplit<cr>', { desc = "Split Vertically" })
+keymap('n', '<C-h>', ':split<cr>', { desc = "Split Horizontally" })
+keymap('n', 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', { desc = "Display Tooltip" })
 
 -- CMake
 keymap('', '<leader>cg', ':CMakeGenerate<cr>', {})
@@ -25,3 +25,4 @@ keymap('', '<leader>th', "<cmd>lua require('telescope.builtin').help_tags()<cr>"
 keymap('', '<leader>bh', ":e ~/<cr>", { desc = "Browse Home" })
 keymap('', '<leader>bn', ":e ~/.config/nvim<cr>", { desc = "Browse NVIM Config" })
 keymap('', '<leader>bg', ":e ~/git<cr>", { desc = "Browse Git" })
+
