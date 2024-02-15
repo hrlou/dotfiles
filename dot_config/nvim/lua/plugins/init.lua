@@ -17,6 +17,7 @@ require('lazy').setup({
 	{ 'lukas-reineke/indent-blankline.nvim', name = 'ibl', main = "ibl", opts = {} }, -- tab lines
 	{ 'windwp/nvim-autopairs', event = "InsertEnter", opts = {} },
 	{ 'EtiamNullam/deferred-clipboard.nvim', name = 'deferred-clipboard', opts = {} }, -- use system clipboard
+	{ 'edluffy/hologram.nvim', name = 'hologram', opts = { autodisplay = true } },
 	require('plugins.config.alpha'),
 	require('plugins.config.barbar'),
 	require('plugins.config.cmp'),
