@@ -1,7 +1,3 @@
-require('plugins')
-require('keymap')
-require('theme')
-
 -- General Options
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -13,3 +9,7 @@ vim.opt.signcolumn = "auto"
 vim.opt.wrap = false
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
+
+require('plugins')
+require('keymap')
+require('theme')
