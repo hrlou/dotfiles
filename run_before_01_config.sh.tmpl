@@ -10,6 +10,11 @@ if cmd_check python3; then
 	fi
 fi
 
+# Install Cargo utils
+if cmd_check cargo; then
+	cargo install --git https://github.com/lincheney/nvim-cat
+fi
+
 # TODO
 # Install Fonts
 # Install Icons / Themes
