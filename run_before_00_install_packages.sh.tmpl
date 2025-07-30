@@ -1,19 +1,24 @@
 {{  template "header.sh.tmpl" . -}}
 # vim: ft=bash
+
 log_info "Installing pre-requisites"
-if cmd_check pacman; then
-	if ! cmd_check paru; then
-		CLONE="${HOME}/.local/clone"
-		log_info "'paru' not found, installing!"
-		mkdir -p ${CLONE}
-		git clone 'https://aur.archlinux.org/paru.git' "${CLONE}/paru"
-		cd "${CLONE}/paru"
-		makepkg -si
-		cd -
-		rm -rf "${CLONE}/paru"
-	else
-		log_debug "'paru' found!"
-	fi
+
+if ! cmd_check pacman; then
+	log_warn "'pacman' not found, skipping installation"
+	exit 0
+fi
+
+if ! cmd_check paru; then
+	CLONE="${HOME}/.local/clone"
+	log_info "'paru' not found, installing!"
+	mkdir -p "${CLONE}"
+	git clone 'https://aur.archlinux.org/paru.git' "${CLONE}/paru"
+	cd "${CLONE}/paru"
+	makepkg -si
+	cd -
+	rm -rf "${CLONE}/paru"
+else
+	log_debug "'paru' found!"
 fi
 
 {{ if eq .chezmoi.uid "0" }}
